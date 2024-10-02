@@ -17,9 +17,7 @@ public class Player : Character
     }
     private void FixedUpdate()
     {
-        float horizontalF = Input.GetAxis(AxisMacro.HorizontalString);
-        float verticalF=Input.GetAxis(AxisMacro.VerticalString);
-        transform.Translate(new Vector3(horizontalF, verticalF,0)*moveSpeed*Time.deltaTime);
+        Controller();
     }
     public static Player GetInstance()
     {
@@ -31,17 +29,32 @@ public class Player : Character
     }
     protected override void Controller()
     {
-        //实现玩家的操作
-        //注意和动画的联动-状态机
-        //base.Controller();
-        
+        //移动状态机
+        float horizontalF = Input.GetAxis(AxisMacro.HorizontalString);
+        if(horizontalF==0f) currStates=PlayerStates.Idle;
+        else currStates = PlayerStates.Move;
 
+        switch (currStates)
+        {
+            case PlayerStates.Idle:
+                //do nothing
+                break;
+            case PlayerStates.Move:
+                currStates = PlayerStates.Move;
+                transform.Translate(new Vector3(horizontalF, 0f, 0f) * moveSpeed * Time.deltaTime);
+                break;
+        }
     }
 
     //应该使用单例模式
     //只有一个player
     private Player(){ }
     private static Player player=null;
-
-
+    //移动状态机变量
+    enum PlayerStates
+    {
+        Idle, Move, Jump
+    }
+    private PlayerStates currStates= PlayerStates.Idle;
 }
+
