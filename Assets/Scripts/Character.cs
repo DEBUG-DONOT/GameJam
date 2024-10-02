@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
         _animator = GetComponent<Animator>();
         if (_animator != null) Debug.LogError(gameObject.name+"no animator!");
         _transform = transform;
-        if (_transform != null) Debug.LogError(gameObject+"no transfomation!");
+        if (_transform != null) Debug.LogError(gameObject+"no transfomation!");  
     }
 
     // Update is called once per frame
@@ -34,5 +34,5 @@ public class Character : MonoBehaviour
     public float moveSpeed = 10.0f;
     Transform _transform=null;
     Animator _animator=null;
-    
+
 }
