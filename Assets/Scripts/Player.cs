@@ -38,6 +38,7 @@ public class Player : Character
         {
             case PlayerStates.Idle:
                 //do nothing
+                if (horizontalF != 0) currStates = PlayerStates.Move;
                 break;
             case PlayerStates.Move:
                 currStates = PlayerStates.Move;
