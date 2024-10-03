@@ -821,8 +821,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
+  maxHP: 0
+  money: 0
   moveSpeed: 10
-  MaxJumpTimes: 1
+  immuneTime: 0
+  defence: 0
+  attack: 0
+  mp: 0
+  maxMP: 0
+  jumpHight: 0
+  minJumpHight: 0
+  maxJumpTimes: 1
+  luck: 0
+  durity: 0
+  maxDurity: 0
+  dashDistance: 0
+  hate: 0
+  peaceTime: 0
+  hungry: 0
+  sanity: 0
 --- !u!50 &1289645622
 Rigidbody2D:
   serializedVersion: 4
@@ -860,6 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599577806}
   - component: {fileID: 1599577805}
+  - component: {fileID: 1599577807}
   m_Layer: 0
   m_Name: bulletTest
   m_TagString: Untagged
@@ -934,6 +952,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1599577807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599577804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77180e8ada02624db850b3d8c125a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062111911
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,3 +1019,4 @@ SceneRoots:
   - {fileID: 2062111913}
   - {fileID: 833446639}
   - {fileID: 818345413}
+  - {fileID: 1599577806}
