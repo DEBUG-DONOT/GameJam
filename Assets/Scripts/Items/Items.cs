@@ -8,14 +8,13 @@ using UnityEngine;
 
 public class Item:MonoBehaviour
 {
-
     public virtual void Do_Item_Function() 
     {
-            foreach (ItemFunction curr in itemFunctions) curr.Do_function();
-        
+            foreach (ItemFunction curr in itemFunctions) curr.Do_function(this);
     }
-
-    private List<ItemFunction> itemFunctions = new List<ItemFunction>();
+    public void Add_Item_Function(ItemFunction curr) { itemFunctions.Add(curr); }
+    [SerializeField]
+    protected List<ItemFunction> itemFunctions = new List<ItemFunction>();
 }
 
 /*
@@ -24,5 +23,6 @@ public class Item:MonoBehaviour
 
 public class ItemFunction
 {
-    public virtual void Do_function() { }//这是一个实现具体功能的函数，加血扣血什么的在这里实现，直接掉player接口，记得调用单例给的
+    public virtual void Do_function(Item item) { }//这是一个实现具体功能的函数，加血扣血什么的在这里实现，直接掉player接口，记得调用单例给的
+    public Item _item=null;
 }
