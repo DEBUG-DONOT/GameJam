@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    private static BGMManager instance=null;
+    //private static BGMManager instance=null; 可能用到
     private AudioSource audioSource;
     private string currBGMName=null;
     private void Start()
@@ -12,22 +12,7 @@ public class BGMManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
     }
-    public static BGMManager Instance
-    {
-        get { return instance; }
-    }
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-        DontDestroyOnLoad(this.gameObject);
-    }
+    //BGM同时只播放一首
     public void Play(string name)
     {
         if (!name.Equals(currBGMName))
@@ -47,4 +32,20 @@ public class BGMManager : MonoBehaviour
         audioSource.Stop();
         currBGMName =null;
     }
+    /*public static BGMManager Instance
+    {
+        get { return instance; }
+    }
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }*/
 }
