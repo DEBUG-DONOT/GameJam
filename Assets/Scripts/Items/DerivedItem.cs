@@ -30,10 +30,3 @@ public class ChangeWithTimeItem :Item
 ////////////////////////////////////////////////////////
 ////具体道具类型
 //////////////////////////////////////////////////////
-public class Bullet:LongLastingItem
-{
-   Bullet()
-    {
-        this.Add_Item_Function(new SingleDirectionMove());
-    }
-}

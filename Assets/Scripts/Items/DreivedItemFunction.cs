@@ -44,7 +44,7 @@ public class SingleDirectionMove : EffectItemFunction
 {
     public override void Do_function(Item item)
     {
-        item.gameObject.transform.Translate(new UnityEngine.Vector3(1, 0, 0)*10);
+        item.gameObject.transform.Translate(new UnityEngine.Vector3(0.5f, 0, 0));
     }
 }
 
