@@ -128,4 +128,40 @@ public class Character : MonoBehaviour
         }
     }
     #endregion
+
+    #region Durity(shield)
+    [SerializeField] protected int durity;
+    public int Durity
+    {
+        set
+        {
+            durity = value;
+            if (durity < 0) Durity = 0;
+        }
+        get
+        {
+            return durity;
+        }
+    }
+    #endregion
+
+    #region Catagories
+    public enum Catagories
+    {
+        Player
+    }
+    [SerializeField] protected Catagories catagory;
+    //调用时检查是否匹配
+    public Catagories Catagory
+    {
+        set
+        {
+            catagory = value;
+        }
+        get
+        {
+            return catagory;
+        }
+    }
+    #endregion
 }

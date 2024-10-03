@@ -136,24 +136,6 @@ public class Player : Character
     }
     #endregion
 
-    #region Durity
-    [SerializeField] private int durity;
-    [SerializeField] private int maxDurity;
-    public int Durity
-    {
-        set
-        {
-            durity = value;
-            if (durity > maxDurity) Durity = maxDurity;
-            if (durity < 0) Durity = 0;
-        }
-        get
-        {
-            return durity;
-        }
-    }
-    #endregion
-
     #region Dash
     [SerializeField] private float dashDistance;
     public float DashDistance
@@ -220,6 +202,33 @@ public class Player : Character
         get
         {
             return sanity;
+        }
+    }
+    #endregion
+
+    #region Hiden Values
+    [SerializeField] private int holy;
+    [SerializeField] private int evil;
+    public int Holy
+    {
+        set
+        {
+            holy = value;
+        }
+        get
+        {
+            return holy;
+        }
+    }
+    public int Evil
+    {
+        set
+        {
+            evil = value;
+        }
+        get
+        {
+            return evil;
         }
     }
     #endregion
