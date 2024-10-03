@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance = null;
+    //private static SoundManager instance = null;  可能用到
     private AudioSource audioSource;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
-    public static SoundManager Instance
+    //sound同时可能播放多次
+    public void Play(string name)
+    {
+        AudioClip audioClip= Resources.Load<AudioClip>("Sound/" + name);
+        if (audioClip == null)
+        {
+            Debug.LogError(name + " is not a sound!");
+        }
+        audioSource.PlayOneShot(audioClip);
+    }
+    /*public static SoundManager Instance
     {
         get { return instance; }
     }
@@ -25,18 +35,9 @@ public class SoundManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-    }
-    public void Play(string name)
-    {
-        audioSource.clip = Resources.Load<AudioClip>("Sound/" + name);
-        if (audioSource.clip == null)
+        if(instance == null)
         {
-            Debug.LogError(name + " is not a sound!");
+            instance = new SoundManager();
         }
-        audioSource.PlayOneShot(audioSource.clip);
-    }
-    public void Stop()
-    {
-        audioSource.Stop();
-    }
+    }*/
 }
