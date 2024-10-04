@@ -13,7 +13,7 @@ public class Bullet : LongLastingItem
     {
         Do_Item_Function();
     }
-
+    [SerializeField]
     private float BulletSpeed = 1;
 
 }

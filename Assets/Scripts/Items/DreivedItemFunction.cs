@@ -37,7 +37,7 @@ public class ChangeJumpHight : EffectItemFunction
     //ÌøÔ¾¸ß¶È
     public override void Do_function(Item item)
     {
-
+        
     }
 }
 
@@ -64,6 +64,16 @@ public class ChaseMouseMove : EffectItemFunction
     public float ChangeSpeed=1;
     UnityEngine.Vector3 direction;
     bool isFirst=true;
+}
+
+public class ChasePlayer : EffectItemFunction
+{
+    public float ChangeSpeed = 1;
+    public override void Do_function(Item item)
+    {
+        UnityEngine.Vector3 direction=(Player.GetInstance().transform.position-item.transform.position).normalized;
+        item.transform.Translate(direction * ChangeSpeed * Time.deltaTime);
+    }
 }
 
 

@@ -4,7 +4,7 @@ public class SingleEffectItem:Item
 {
     public override void Do_Item_Function()
     {
-        base.Do_Item_Function();
+        foreach (ItemFunction curr in itemFunctions) curr.Do_function(this);
         Destroy(gameObject);
     }
 }
@@ -13,7 +13,7 @@ public class LongLastingItem : Item //сю╬ц
 {
     public override void Do_Item_Function()
     {
-        base.Do_Item_Function();
+        foreach (ItemFunction curr in itemFunctions) curr.Do_function(this);
     }
 }
 

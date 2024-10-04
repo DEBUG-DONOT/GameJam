@@ -64,17 +64,30 @@ public class Player : Character
                 Debug.Log("player state is " + currStates);
                 break;
 
-            case PlayerStates.JumpUP:
-                //rb.AddForce(playerMoveDirection, ForceMode2D.Impulse);
-               // transform.Translate(playerMoveDirection); 
-                transform.position = transform.position+new Vector3(0,jumpHight,0);
-                Debug.Log("player state is " + currStates);
-                currStates = PlayerStates.JumpDOWN;
-                break;
-            case PlayerStates.JumpDOWN:
-                //if() //如果碰到地面了
-                break;
+                //如果是俯视角的游戏就不需要jump
+            //case PlayerStates.JumpUP:
+            //    //rb.AddForce(playerMoveDirection, ForceMode2D.Impulse);
+            //   // transform.Translate(playerMoveDirection); 
+            //    transform.position = transform.position+new Vector3(0,jumpHight,0);
+            //    Debug.Log("player state is " + currStates);
+            //    currStates = PlayerStates.JumpDOWN;
+            //    break;
+
+            //case PlayerStates.JumpDOWN:
+            //    //if() //如果碰到地面了
+            //    break;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision == null) return;
+        //如果撞到tag为ground的物体就让onground为false
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision == null) return;
+        //如果离开tag为ground的物体就让onground为true，但是也不一定这么做
     }
 
     //应该使用单例模式
@@ -87,6 +100,7 @@ public class Player : Character
     {
         Idle, Move, JumpUP, JumpDOWN
     }
+    private bool onGround = true;//只有onGround==true才能起跳
     [SerializeField]
     float drag = 1;//力衰减的速度，调节手感
     Vector3 playerMoveDirection = Vector3.zero;
