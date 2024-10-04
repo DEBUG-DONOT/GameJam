@@ -829,9 +829,10 @@ MonoBehaviour:
   attack: 0
   durity: 0
   catagory: 0
+  drag: 1
   mp: 0
   maxMP: 0
-  jumpHight: 0
+  jumpHight: 1
   minJumpHight: 0
   maxJumpTimes: 1
   luck: 0

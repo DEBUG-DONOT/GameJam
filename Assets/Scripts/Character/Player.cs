@@ -32,24 +32,47 @@ public class Player : Character
     protected override void Controller()
     {
         //移动状态机
-        float horizontalF = Input.GetAxis(AxisMacro.HorizontalString);
-        float verticalF = Input.GetAxis(AxisMacro.VerticalString);
+        float horizontalF = MoveSpeed*Time.deltaTime;
+        float verticalF = jumpHight*Time.deltaTime;
         //根据状态移动角色
         switch (currStates)
         {
             case PlayerStates.Idle:
-                //do nothing
-                if (horizontalF != 0) currStates = PlayerStates.Move;
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                {
+                    currStates = PlayerStates.Move;
+                    if (Input.GetKey(KeyCode.A)) playerMoveDirection = new Vector3(-horizontalF, 0, 0);
+                    else playerMoveDirection = new Vector3(horizontalF, 0, 0);
+                }
+                else if (Input.GetKey(KeyCode.W))
+                {
+                    currStates = PlayerStates.JumpUP;
+                    playerMoveDirection = new Vector3(0, verticalF, 0);
+                }
                 break;
             case PlayerStates.Move:
-                currStates = PlayerStates.Move;
-                transform.Translate(new Vector3(horizontalF, 0f, 0f) * moveSpeed * Time.deltaTime);
+                //先移动
+                //rb.AddForce(playerMoveDirection,ForceMode2D.Impulse);
+                transform.Translate(playerMoveDirection);
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) ;
+                else if(Input.GetKey(KeyCode.W))
+                {
+                    currStates = PlayerStates.JumpUP;
+                    playerMoveDirection = new Vector3(0, verticalF, 0);
+                }
+                else currStates = PlayerStates.Idle;
                 Debug.Log("player state is " + currStates);
                 break;
-            case PlayerStates.Jump:
-                transform.Translate(new Vector3(0f, verticalF, 0f) * moveSpeed * Time.deltaTime * 1000);
-                //rb.AddForce(new Vector2(0, 10));
+
+            case PlayerStates.JumpUP:
+                //rb.AddForce(playerMoveDirection, ForceMode2D.Impulse);
+               // transform.Translate(playerMoveDirection); 
+                transform.position = transform.position+new Vector3(0,jumpHight,0);
                 Debug.Log("player state is " + currStates);
+                currStates = PlayerStates.JumpDOWN;
+                break;
+            case PlayerStates.JumpDOWN:
+                //if() //如果碰到地面了
                 break;
         }
     }
@@ -62,9 +85,11 @@ public class Player : Character
     //移动状态机变量
     enum PlayerStates
     {
-        Idle, Move, Jump
+        Idle, Move, JumpUP, JumpDOWN
     }
-
+    [SerializeField]
+    float drag = 1;//力衰减的速度，调节手感
+    Vector3 playerMoveDirection = Vector3.zero;
     private PlayerStates currStates = PlayerStates.Idle;
     private KeyCode JumpKeyCode = KeyCode.W;
 
@@ -93,7 +118,7 @@ public class Player : Character
     #endregion
 
     #region Jump
-    [SerializeField] private float jumpHight;
+    [SerializeField] private float jumpHight=2;
     [SerializeField] private float minJumpHight;
     [SerializeField] private int maxJumpTimes = 1;
     public float JumpHight
