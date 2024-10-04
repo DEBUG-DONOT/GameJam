@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
             currUIPanel.GetComponent<UIBase>().OnExit();
             currUIPanel=otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
-            
         }
     }
     public void EnterGameScene()
@@ -43,8 +42,7 @@ public class UIManager : MonoBehaviour
             {
                 Time.timeScale = 0;
                 currUIPanel = GameObject.Find("EndScene");
-
-                currUIPanel.GetComponent<EndScene>().OnEnter();
+                currUIPanel.GetComponent<UIBase>().OnEnter();
                 isEnd=false;
                 return;
             }
