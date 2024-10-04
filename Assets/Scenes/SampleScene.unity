@@ -827,19 +827,21 @@ MonoBehaviour:
   immuneTime: 0
   defence: 0
   attack: 0
+  durity: 0
+  catagory: 0
   mp: 0
   maxMP: 0
   jumpHight: 0
   minJumpHight: 0
   maxJumpTimes: 1
   luck: 0
-  durity: 0
-  maxDurity: 0
   dashDistance: 0
   hate: 0
   peaceTime: 0
   hungry: 0
   sanity: 0
+  holy: 0
+  evil: 0
 --- !u!50 &1289645622
 Rigidbody2D:
   serializedVersion: 4
