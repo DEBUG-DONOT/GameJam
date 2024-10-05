@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class CreateScene : UIBase
 {
     // Start is called before the first frame update
-    //Ñ¡ÔñÏ¸°ûµÄÊ±ºò¸ÄÕâ¸ö
+    //Ã‘Â¡Ã”Ã±ÃÂ¸Â°Ã»ÂµÃ„ÃŠÂ±ÂºÃ²Â¸Ã„Ã•Ã¢Â¸Ã¶
     public GameObject newCell;
     public GameObject Blankprefab;
     public GameObject ChloroplastPrefab;
@@ -54,24 +54,13 @@ public class CreateScene : UIBase
         position = pos;
     }
 
-    public void SetBlank()
+    public void CreateChl()
     {
-        newCell=Blankprefab;
+        GameObject temp= Instantiate(ChloroplastPrefab,position,Cell.transform.rotation,Cell.transform);
+        temp.transform.parent=Cell.transform;
+        temp.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;
+        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
     }
-    public void SetChlo()
-    {
-        newCell = ChloroplastPrefab;
-    }
-    public void SetMouth() 
-    {
-        newCell = MouthPrefab;
-    }
-    public void SetMito()
-    {
-        newCell = MitochondriaPrefab;
-    }
-    public void SetFlagellum() 
-    {
-        newCell = FlagellumPrefab;
-    }
+
+
 }
