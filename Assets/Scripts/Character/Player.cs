@@ -10,6 +10,7 @@ public class Player : Character
     {
         rb = GetComponent<Rigidbody2D>();
         if (rb == null) Debug.LogError("player no rigidbody2D!");
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -30,6 +31,27 @@ public class Player : Character
         return player;
     }
     protected override void Controller()
+    {   
+        if (canMove)
+        {
+            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
+            transform.Translate(playerMoveDirection);
+            
+            if (Input.GetKey(KeyCode.Q))
+            {
+                rotationNumber += 3;
+            }
+            else if (Input.GetKey(KeyCode.E))
+            {
+                rotationNumber -= 3;
+            }
+            Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
+            transform.rotation = rotation;
+        }
+    }
+
+
+    /*protected override void Controller()
     {
         //移动状态机
         float horizontalF = MoveSpeed*Time.deltaTime;
@@ -77,7 +99,7 @@ public class Player : Character
             //    //if() //如果碰到地面了
             //    break;
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -103,9 +125,11 @@ public class Player : Character
     private bool onGround = true;//只有onGround==true才能起跳
     [SerializeField]
     float drag = 1;//力衰减的速度，调节手感
-    Vector3 playerMoveDirection = Vector3.zero;
+    Vector2 playerMoveDirection = Vector2.zero;
     private PlayerStates currStates = PlayerStates.Idle;
     private KeyCode JumpKeyCode = KeyCode.W;
+    public bool canMove ;
+    [SerializeField] private float rotationNumber=0;
 
     #region MP
     [SerializeField] private int mp;
