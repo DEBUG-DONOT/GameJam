@@ -47,31 +47,11 @@ public class CreateScene : UIBase
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
     }
-    public  void GetPositon(GameObject cell,Vector2 pos)
+    public void GetPositon(GameObject cell,Vector2 pos)
     {
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterPanel(GameObject.Find("CreateScene"));
+        Debug.LogWarning("1");
         Cell = cell;
         position = pos;
-    }
-
-    public void SetBlank()
-    {
-        newCell=Blankprefab;
-    }
-    public void SetChlo()
-    {
-        newCell = ChloroplastPrefab;
-    }
-    public void SetMouth() 
-    {
-        newCell = MouthPrefab;
-    }
-    public void SetMito()
-    {
-        newCell = MitochondriaPrefab;
-    }
-    public void SetFlagellum() 
-    {
-        newCell = FlagellumPrefab;
     }
 }
