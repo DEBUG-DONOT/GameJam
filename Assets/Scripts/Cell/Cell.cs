@@ -70,11 +70,11 @@ public class Cell : MonoBehaviour
         //将新生成的实例记录在数组中
         var generateDirection = position - this.transform.position;
         int index= HexagonDirection.GetIndex(generateDirection);
-        if (index == -1) Debug.LogError("can not to find index!");
-        else
-        {
-            this.neighbors[index] = temp;
-        }
+        //if (index == -1) Debug.LogError("can not to find index!");
+        //else
+        //{
+        //    this.neighbors[index] = temp;
+        //}
         //向六个方向判断并记录新生成的实例的周围的情况
         Cell tempCell=temp.GetComponent<Cell>();
     }
