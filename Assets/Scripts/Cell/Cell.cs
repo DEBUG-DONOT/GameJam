@@ -38,6 +38,7 @@ public class Cell : MonoBehaviour
                 DestroyAllVirtualCell();
 
                 //½øui
+                
                 //GameObject x= 
                 //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
