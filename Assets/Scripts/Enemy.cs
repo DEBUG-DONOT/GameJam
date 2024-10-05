@@ -6,6 +6,7 @@ using static UnityEditor.Progress;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject player;
     void Start()
     {
         
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(Vector3.Distance(this.transform.position,Player.GetInstance().transform.position)>SearchRange)
+        if(Vector3.Distance(this.transform.position,player.transform.position)>SearchRange)
         {
 
             transform.Translate(randomVector*speed*Time.deltaTime);
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour
     }
     void ChasePlayer()
     {
-        Vector3 direction = (Player.GetInstance().transform.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized;
         transform.Translate(direction * speed * Time.deltaTime);
     }
     Vector3 randomVector;
