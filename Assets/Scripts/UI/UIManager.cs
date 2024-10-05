@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
         currUIPanel = GameObject.Find("MainMenu");
         isEnd = false;
     }
-    public void EnterOtherPanel(GameObject otherPanel)
+    public void EnterPanel(GameObject otherPanel)
     {
         UIBase newUI = otherPanel.GetComponent<UIBase>();
         if (newUI == null)
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         }
         if (newUI.state == UIState.Exit)
         {
-            currUIPanel.GetComponent<UIBase>().OnExit();
+            if(currUIPanel!=null)currUIPanel.GetComponent<UIBase>().OnExit();
             currUIPanel=otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
         }
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        if (currUIPanel == null) 
+        if (currUIPanel == null||currUIPanel==GameObject.Find("CreateScene")) 
         {
             //前面写结束条件，转到结束界面
             if(Input.GetKeyDown(KeyCode.F))//写结束条件

@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class MainMenu : UIBase 
+public class CreateScene : UIBase
 {
-    public Text text;
-    private void Start()
+    // Start is called before the first frame update
+    //选择细胞的时候改这个
+    public GameObject newCell;
+    void Start()
     {
-        OnEnter();
+        OnExit();
     }
     public override void OnEnter()
     {
-        text.GetComponent<EnergyText>().enabled = false;
-        text.text=" ";
+        Time.timeScale = 0;
         state = UIState.Enter;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
     }
     public override void OnExit()
     {
-        text.GetComponent<EnergyText>().enabled = true;
+
+        newCell = null;
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
