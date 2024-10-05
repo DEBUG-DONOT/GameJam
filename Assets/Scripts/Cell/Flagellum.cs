@@ -17,10 +17,20 @@ public class Flagellum : CellBase
         loseEnergy = 0;
         needEnergy = 6;
         driveForce = 3;
+        timer = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            TryUpdate();
+            timer = 1.0f;
+        }
+    }
+    private void TryUpdate()
     {
         CellEnergy += getEnergy - loseEnergy;
         getEnergy = 0;

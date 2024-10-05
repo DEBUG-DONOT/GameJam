@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class CellBase : MonoBehaviour
 {
+
     public enum organelleType
     {
-        Blank,Chloroplast,Mitochondria,Mouth,Flagellum,CellSpine, Pipe,Capsid
+        Blank, Chloroplast, Mitochondria, Mouth, Flagellum, CellSpine, Pipe, Capsid
     }
     public organelleType type;
     public int cost;
     public int mass;
     public int driveForce;
-    
+    public float timer;
+    public float radius;
     #region 胞内能量
-    [SerializeField]protected int cellEnergy;
+    [SerializeField] protected int cellEnergy;
     public int CellEnergy
     {
         set { cellEnergy = value; }
@@ -28,21 +30,21 @@ public class CellBase : MonoBehaviour
     }
     public void LoseEnergy(int energy)
     {
-        loseEnergy+=energy;
+        loseEnergy += energy;
     }
     protected int productEnergy;
-    protected int needEnergy;
-    protected int maxEnergy;
+    public int needEnergy;
+    public int maxEnergy;
     #endregion
     #region 有机物
     [SerializeField] protected int organic;
     public int Organic
     {
-        set 
+        set
         {
             organic = value;
-            if (organic < 0) 
-            { 
+            if (organic < 0)
+            {
                 Organic = 0;
             }
         }
@@ -56,10 +58,10 @@ public class CellBase : MonoBehaviour
     }
     public void LoseOrganic(int organic)
     {
-        loseOrganic+=organic;
+        loseOrganic += organic;
     }
-    protected int needOrganic;
-    protected int productOrganic;
+    public int needOrganic;
+    public int productOrganic;
     protected int maxOrganic;
     #endregion
     public virtual void OnCollisionEnter2D(Collision2D collision)
