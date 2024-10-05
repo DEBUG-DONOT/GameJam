@@ -15,8 +15,8 @@ public class Cell : MonoBehaviour
     
     void Start()
     {
-        rendererSize=GetComponent<Renderer>().bounds.size.x*math.sqrt(3.0f)/2.0f;
-        //neighbors = new List<GameObject>(new GameObject[6]);
+        rendererSize=GetComponent<Renderer>().bounds.size.x;
+        //Debug.Log(rendererSize);
     }
     private void Awake()
     {
@@ -29,31 +29,38 @@ public class Cell : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             nowSpwn = true;
-            //Player.GetInstance().canMove = false;
-            //Debug.Log("space");
             GenerateVirtualCells();
             pauseGame();
-            Debug.Log(this.gameObject.name + " space!");
         }
         if (nowSpwn)
         {
            //找到点击的位置
            var clickedGO=CheckClick.CheckClickOnSomething();
-           if(clickedGO==null)
-           {
-                //Debug.Log("click nothing!");  
-           }
-           else if (virtualCell.CompareTag(clickedGO.tag)==true)
+           if (clickedGO!=null&& virtualCell.CompareTag(clickedGO.tag)==true)
             {
-                Vector3 pos=clickedGO.transform.position;   
+                Vector3 pos=clickedGO.transform.position;
                 DestroyAllVirtualCell();
+                //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
                 pauseGame();
             }
         }
     }
 
-    public void DestroyAllVirtualCell()
+    public List<Vector3> ChoseMultiVirtualCell()//一次选中多个virtual cell
+    {
+        List<Vector3> poses=new List<Vector3>();
+        //直到ui发出指令
+
+        return poses;
+    }
+    public void GenerateMultiRealCell(List<Vector3> poses)//一次选中多个virtual cell并生成
+    {
+        DestroyAllVirtualCell();
+
+    }
+
+    void DestroyAllVirtualCell()
     {
         GameObject[] allVirtualCells = GameObject.FindGameObjectsWithTag(virtualCell.tag);
         foreach (GameObject virtualCell in allVirtualCells)
@@ -61,27 +68,23 @@ public class Cell : MonoBehaviour
             Destroy(virtualCell);
         }
     }
+
     public void GenerateRealCell(Vector3 position)//在position位置生成一个real cell
     {
-        GameObject temp = Instantiate(RealCell,  position, transform.rotation);
+        GameObject temp = Instantiate(RealCell, position, transform.rotation);
         temp.transform.parent = transform;
         nowSpwn = false;
-        //Debug.Log("generate real");
-        //将新生成的实例记录在数组中
-        var generateDirection = position - this.transform.position;
-        int index= HexagonDirection.GetIndex(generateDirection);
-        //if (index == -1) Debug.LogError("can not to find index!");
-        //else
-        //{
-        //    this.neighbors[index] = temp;
-        //}
-        //向六个方向判断并记录新生成的实例的周围的情况
-        Cell tempCell=temp.GetComponent<Cell>();
+    }
+    public void GenerateRealCell(Vector3 position,GameObject m_prefab)//在position位置生成一个real cell
+    {
+        GameObject temp = Instantiate(m_prefab, position, transform.rotation);
+        temp.transform.parent = transform;
+        nowSpwn = false;
     }
 
     void GenerateVirtualCells()//生成所有可能的位置
     {
-        Debug.Log(this.gameObject.name + "gen virtual");
+        //Debug.Log(this.gameObject.name + "gen virtual");
         for (int i = 0; i < 6; i++)
         {
             if (neighbors[i] == null)
@@ -89,6 +92,26 @@ public class Cell : MonoBehaviour
                 ShowSingleVirtualCell(i);
             }
         }
+    }
+    public bool IsOutSideCell()//这个细胞是不是与外界有接触
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (neighbors[i] == null)
+            {
+                if (testInSideOneDirection(i) == false) return true; //这个方向没东西
+            }
+        }
+        return false;   
+    }
+    bool testInSideOneDirection(int i)//一个方向
+    {
+        RaycastHit2D hit2D = Physics2D.Raycast(HexagonDirection.Heax_Directions[i] + transform.position, Vector2.zero, 0.1f);
+        if (hit2D == true)//这个方向有东西
+        {
+            return false;
+        }
+        return true;
     }
     void ShowSingleVirtualCell(int i)
     {
@@ -98,15 +121,16 @@ public class Cell : MonoBehaviour
             neighbors[i] = hit2D.collider.gameObject;
             return; 
         }
-        GameObject temp = Instantiate(virtualCell,HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
+        GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
         temp.transform.parent = transform;
     }
     void pauseGame()
     {
-        if(gamePaused)
+        if(!gamePaused)
         {
             Time.timeScale = 0;
             gamePaused = true;
+            //Debug.Log("pause!");
         }
         else
         {
@@ -115,16 +139,10 @@ public class Cell : MonoBehaviour
         }
     }
 
-
-    private void FixedUpdate()
-    {
-        
-    }
     float rendererSize = 0;
     private bool gamePaused=false;
     private Vector3 LeftPosition,RightPosition,UpPosition,DownPosition;
     bool nowSpwn=false;
-    
     public List<GameObject> neighbors ;
     
 }

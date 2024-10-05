@@ -6,14 +6,15 @@
 */
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.Mathematics;
 using UnityEngine;
 public class HexagonDirection
 {
     //public static Vector3 Heax_up = new Vector3(0, 1, 0);
-    static Vector3 Heax_left = new Vector3(-1, 0,0);
+    static Vector3 Heax_left = new Vector3(-Mathf.Sqrt(3.0f)/2-0.2f, 0,0);
     static Vector3 Heax_leftUp=new Vector3(-0.5f, 1);
     static Vector3 Heax_leftDown = new Vector3(-0.5f, -1);
-    static Vector3 Heax_Right = new Vector3(1, 0);
+    static Vector3 Heax_Right = new Vector3(Mathf.Sqrt(3.0f)/2+0.2f, 0);
     static Vector3 Heax_RightDown = new Vector3(0.5f, -1);
     static Vector3 Heax_RightUp = new Vector3(0.5f, 1);
 
@@ -40,7 +41,7 @@ public class CheckClick
             if(hit.collider != null)
             {
                 GameObject go=hit.collider.gameObject;
-                Debug.Log("click on"+go.name);
+                //Debug.Log("click on"+go.name);
                 return go;
             }
             else return null;
