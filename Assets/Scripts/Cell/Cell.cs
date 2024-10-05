@@ -30,13 +30,14 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            nowSpwn = true;
+            nowSpwn = true; 
+            GenerateVirtualCells();
             pauseGame();
             GenerateVirtualCells();
         }
         if (nowSpwn)
         {
+           
             var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
@@ -44,7 +45,6 @@ public class Cell : MonoBehaviour
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
                 GenerateRealCell(pos);
-                pauseGame();
             }
         }
     }
