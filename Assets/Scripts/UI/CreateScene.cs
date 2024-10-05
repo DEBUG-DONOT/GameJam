@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class CreateScene : UIBase
 {
     // Start is called before the first frame update
-    //Ñ¡ÔñÏ¸°ûµÄÊ±ºò¸ÄÕâ¸ö
+    //Ã‘Â¡Ã”Ã±ÃÂ¸Â°Ã»ÂµÃ„ÃŠÂ±ÂºÃ²Â¸Ã„Ã•Ã¢Â¸Ã¶
     public GameObject newCell;
     public GameObject Blankprefab;
     public GameObject ChloroplastPrefab;
@@ -47,13 +47,13 @@ public class CreateScene : UIBase
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
     }
-    public void GetPositon(GameObject cell,Vector2 pos)
+    public  void GetPositon(GameObject cell,Vector2 pos)
     {
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterPanel(GameObject.Find("CreateScene"));
-        Debug.LogWarning("1");
         Cell = cell;
         position = pos;
     }
+
     public void CreateChl()
     {
         GameObject temp= Instantiate(ChloroplastPrefab,position,Cell.transform.rotation,Cell.transform);
@@ -61,5 +61,6 @@ public class CreateScene : UIBase
         temp.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
     }
+
 
 }

@@ -10,14 +10,14 @@ using UnityEngine.UIElements;
 
 public class Cell : MonoBehaviour
 {
-    public GameObject RealCell;
+    public  GameObject RealCell;
     public GameObject virtualCell;
     static public GameObject ButtonGenCell;
     // Start is called before the first frame update
 
     void Start()
     {
-        rendererSize = GetComponent<Renderer>().bounds.size.x;
+        rendererSize=GetComponent<Renderer>().bounds.size.x;
         //Debug.Log(rendererSize);
     }
     private void Awake()
@@ -30,16 +30,21 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             nowSpwn = true;
             pauseGame();
         }
 
         if (nowSpwn)
         {
+
+            Debug.Log("space");
+
             GenerateVirtualCells();
             var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
+                Debug.Log("click");
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
                 GenerateRealCell(pos);
@@ -54,14 +59,13 @@ public class Cell : MonoBehaviour
         pauseGame();
         if (nowSpwn)
         {
-            GenerateVirtualCells();
-            var clickedGO = CheckClick.CheckClickOnSomething(); Debug.Log("3");
-            if (clickedGO == null) Debug.Log("4");
-            Debug.Log(clickedGO.gameObject.tag);
+            //æ‰¾åˆ°ç‚¹å‡»çš„ä½ç½®
+            var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
+                //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
                 pauseGame();
             }
@@ -69,14 +73,14 @@ public class Cell : MonoBehaviour
     }
 
 
-    public List<Vector3> ChoseMultiVirtualCell()//Ò»´ÎÑ¡ÖĞ¶à¸övirtual cell
+    public List<Vector3> ChoseMultiVirtualCell()//ä¸€æ¬¡é€‰ä¸­å¤šä¸ªvirtual cell
     {
-        List<Vector3> poses = new List<Vector3>();
-        //Ö±µ½ui·¢³öÖ¸Áî
+        List<Vector3> poses=new List<Vector3>();
+        //ç›´åˆ°uiå‘å‡ºæŒ‡ä»¤
 
         return poses;
     }
-    public void GenerateMultiRealCell(List<Vector3> poses)//Ò»´ÎÑ¡ÖĞ¶à¸övirtual cell²¢Éú³É
+    public void GenerateMultiRealCell(List<Vector3> poses)//ä¸€æ¬¡é€‰ä¸­å¤šä¸ªvirtual cellå¹¶ç”Ÿæˆ
     {
         DestroyAllVirtualCell();
 
@@ -91,18 +95,18 @@ public class Cell : MonoBehaviour
         }
     }
 
-    public void GenerateRealCell(Vector3 position)//ÔÚpositionÎ»ÖÃÉú³ÉÒ»¸öreal cell
+    public void GenerateRealCell(Vector3 position)//åœ¨positionä½ç½®ç”Ÿæˆä¸€ä¸ªreal cell
     {
-        //GameObject temp = Instantiate(RealCell, position, transform.rotation);
-        //temp.transform.parent = transform;
+        GameObject temp = Instantiate(RealCell, position, transform.rotation);
+        temp.transform.parent = transform;
         nowSpwn = false;
-        // ÔÚ×ÓÎïÌåÉÏÌí¼Ó Fixed Joint 2D ×é¼ş
+        // åœ¨å­ç‰©ä½“ä¸Šæ·»åŠ  Fixed Joint 2D ç»„ä»¶
         GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
-        //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
     }
-    public void GenerateRealCell(Vector3 position, GameObject m_prefab)//ÔÚpositionÎ»ÖÃÉú³ÉÒ»¸öreal cell
+    public void GenerateRealCell(Vector3 position,GameObject m_prefab)//åœ¨positionä½ç½®ç”Ÿæˆä¸€ä¸ªreal cell
     {
         GameObject temp = Instantiate(m_prefab, position, transform.rotation);
         temp.transform.parent = transform;
@@ -110,7 +114,7 @@ public class Cell : MonoBehaviour
 
     }
 
-    void GenerateVirtualCells()//Éú³ÉËùÓĞ¿ÉÄÜµÄÎ»ÖÃ
+    void GenerateVirtualCells()//ç”Ÿæˆæ‰€æœ‰å¯èƒ½çš„ä½ç½®
     {
         //Debug.Log(this.gameObject.name + "gen virtual");
         for (int i = 0; i < 6; i++)
@@ -121,21 +125,21 @@ public class Cell : MonoBehaviour
             }
         }
     }
-    public bool IsOutSideCell()//Õâ¸öÏ¸°ûÊÇ²»ÊÇÓëÍâ½çÓĞ½Ó´¥
+    public bool IsOutSideCell()//è¿™ä¸ªç»†èƒæ˜¯ä¸æ˜¯ä¸å¤–ç•Œæœ‰æ¥è§¦
     {
         for (int i = 0; i < 6; i++)
         {
             if (neighbors[i] == null)
             {
-                if (testInSideOneDirection(i) == false) return true; //Õâ¸ö·½ÏòÃ»¶«Î÷
+                if (testInSideOneDirection(i) == false) return true; //è¿™ä¸ªæ–¹å‘æ²¡ä¸œè¥¿
             }
         }
-        return false;
+        return false;   
     }
-    bool testInSideOneDirection(int i)//Ò»¸ö·½Ïò
+    bool testInSideOneDirection(int i)//ä¸€ä¸ªæ–¹å‘
     {
         RaycastHit2D hit2D = Physics2D.Raycast(HexagonDirection.Heax_Directions[i] + transform.position, Vector2.zero, 0.1f);
-        if (hit2D == true)//Õâ¸ö·½ÏòÓĞ¶«Î÷
+        if (hit2D == true)//è¿™ä¸ªæ–¹å‘æœ‰ä¸œè¥¿
         {
             return false;
         }
@@ -147,14 +151,14 @@ public class Cell : MonoBehaviour
         if (hit2D == true)
         {
             neighbors[i] = hit2D.collider.gameObject;
-            return;
+            return; 
         }
-        GameObject temp = Instantiate(virtualCell, rendererSize * HexagonDirection.Heax_Directions[i] + transform.position, transform.rotation);
+        GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
         temp.transform.parent = transform;
     }
     void pauseGame()
     {
-        if (!gamePaused)
+        if(!gamePaused)
         {
             Time.timeScale = 0;
             gamePaused = true;
@@ -168,9 +172,9 @@ public class Cell : MonoBehaviour
     }
 
     float rendererSize = 0;
-    private bool gamePaused = false;
-    private Vector3 LeftPosition, RightPosition, UpPosition, DownPosition;
-    bool nowSpwn = false;
-    public List<GameObject> neighbors;
-
+    private bool gamePaused=false;
+    private Vector3 LeftPosition,RightPosition,UpPosition,DownPosition;
+    bool nowSpwn=false;
+    public List<GameObject> neighbors ;
+    
 }
