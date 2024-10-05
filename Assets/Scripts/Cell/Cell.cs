@@ -36,11 +36,6 @@ public class Cell : MonoBehaviour
             {
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
-
-                //进ui
-                
-                //GameObject x= 
-                //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
                 pauseGame();
             }
@@ -91,11 +86,12 @@ public class Cell : MonoBehaviour
 
     public void GenerateRealCell(Vector3 position)//在position位置生成一个real cell
     {
-        GameObject temp = Instantiate(RealCell, position, transform.rotation);
-        temp.transform.parent = transform;
+        //GameObject temp = Instantiate(RealCell, position, transform.rotation);
+        //temp.transform.parent = transform;
         nowSpwn = false;
         // 在子物体上添加 Fixed Joint 2D 组件
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
+        //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
     }
