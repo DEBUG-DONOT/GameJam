@@ -7,7 +7,16 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject currUIPanel;
     public bool isEnd;
-
+    public static UIManager GetInstance()
+    {
+        if (uimanager == null)
+        {
+            uimanager = new UIManager();
+        }
+        return uimanager;
+    }
+    private UIManager() { }
+    private static UIManager uimanager= null;
     private void Awake()
     {
         currUIPanel = GameObject.Find("MainMenu");
