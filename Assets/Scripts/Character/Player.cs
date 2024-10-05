@@ -11,12 +11,21 @@ public class Player : Character
         rb = GetComponent<Rigidbody2D>();
         if (rb == null) Debug.LogError("player no rigidbody2D!");
         canMove = true;
-    }
+        Energy = 0;
+        GetEnergy=0;
+        LoseEnergy=0;
+}
 
     // Update is called once per frame
     void Update()
     {
-
+        if (GetEnergy - LoseEnergy < 0)
+        {
+            HP += GetEnergy - LoseEnergy;
+            Energy = GetEnergy - LoseEnergy;
+            GetEnergy = 0;
+            LoseEnergy = 0;
+        }
     }
     private void FixedUpdate()
     {
@@ -131,28 +140,28 @@ public class Player : Character
     public bool canMove ;
     [SerializeField] private float rotationNumber=0;
 
-    #region MP
-    [SerializeField] private int mp;
-    [SerializeField] private int maxMP;
-    public int MP
+    #region 整体参数
+    public int Energy;
+    public int GetEnergy;
+    public int LoseEnergy;
+    
+    [SerializeField] private int organic;
+    public int Organic
     {
         set
         {
-            mp = value;
-            if (mp > maxMP)
-            {
-                MP = maxMP;
-            }
-            if (mp < 0)
-            {
-                MP = 0;
-            }
+            organic=value;
+            if(organic<0)Organic = 0;
         }
         get
         {
-            return mp;
+            return organic;
         }
     }
+    #endregion
+
+    #region 体外参数
+    private int Depth;
     #endregion
 
     #region Jump
@@ -215,85 +224,5 @@ public class Player : Character
     }
     #endregion
 
-    #region Hate and Peace
-    [SerializeField] private int hate;
-    [SerializeField] private float peaceTime;
-    public int Hate
-    {
-        set
-        {
-            hate = value;
-        }
-        get
-        {
-            return hate;
-        }
-    }
-    public float PeaceTime
-    {
-        set
-        {
-            peaceTime = value;
-        }
-        get
-        {
-            return peaceTime;
-        }
-    }
-    #endregion
-
-    #region Hungry and Sanity
-    [SerializeField] private int hungry;
-    [SerializeField] private int sanity;
-    public int Hungry
-    {
-        set
-        {
-            hungry = value;
-        }
-        get
-        {
-            return hungry;
-        }
-    }
-    public int Sanity
-    {
-        set
-        {
-            sanity = value;
-        }
-        get
-        {
-            return sanity;
-        }
-    }
-    #endregion
-
-    #region Hiden Values
-    [SerializeField] private int holy;
-    [SerializeField] private int evil;
-    public int Holy
-    {
-        set
-        {
-            holy = value;
-        }
-        get
-        {
-            return holy;
-        }
-    }
-    public int Evil
-    {
-        set
-        {
-            evil = value;
-        }
-        get
-        {
-            return evil;
-        }
-    }
-    #endregion
 }
 
