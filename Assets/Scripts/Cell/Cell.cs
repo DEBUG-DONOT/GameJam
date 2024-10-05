@@ -14,7 +14,7 @@ public class Cell : MonoBehaviour
     public GameObject virtualCell;
     static public GameObject ButtonGenCell;
     // Start is called before the first frame update
-    
+
     void Start()
     {
         rendererSize=GetComponent<Renderer>().bounds.size.x;
