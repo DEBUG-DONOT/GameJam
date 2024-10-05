@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -11,6 +12,7 @@ public class Cell : MonoBehaviour
 {
     public  GameObject RealCell;
     public GameObject virtualCell;
+    static public GameObject ButtonGenCell;
     // Start is called before the first frame update
     
     void Start()
@@ -26,16 +28,28 @@ public class Cell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GenerateVirtualCells();
+            var clickedGO = CheckClick.CheckClickOnSomething();
+            if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
+            {
+                Vector3 pos = clickedGO.transform.position;
+                DestroyAllVirtualCell();
 
+                //进ui
+                //GameObject x= 
+                //DestroySelfVirtualCell();
+                GenerateRealCell(pos);
+                pauseGame();
+            }
+        }
     }
     public void AllGenerate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            nowSpwn = true;
-            GenerateVirtualCells();
-            pauseGame();
-        }
+        nowSpwn = true;
+        
+        pauseGame();
         if (nowSpwn)
         {
             //找到点击的位置
