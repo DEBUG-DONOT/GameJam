@@ -77,16 +77,6 @@ public class Cell : MonoBehaviour
         }
         //向六个方向判断并记录新生成的实例的周围的情况
         Cell tempCell=temp.GetComponent<Cell>();
-        //for(int i=0;i<6;i++)
-        //{
-        //    RaycastHit2D hit = Physics2D.Raycast(temp.transform.position, HexagonDirection.Heax_Directions[i], rendererSize);
-        //    if(hit.collider!=null&&hit.collider.gameObject.CompareTag("Cell"))
-        //    {
-        //        tempCell.neighbors[i]= hit.collider.gameObject;
-        //        //Debug.Log("find sthd!");
-        //    }
-        //}
-
     }
 
     void GenerateVirtualCells()//生成所有可能的位置
