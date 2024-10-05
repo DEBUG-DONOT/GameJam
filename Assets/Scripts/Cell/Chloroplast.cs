@@ -51,7 +51,8 @@ public class Chloroplast : CellBase
         {
             int lackOfEnergy = 0;
 
-            var colliders1 = Physics2D.OverlapCircleAll(transform.position, radius * 2, 1 << LayerMask.GetMask("Cell"));
+            var colliders1 = Physics2D.OverlapCircleAll(transform.position, radius * 100, 1 << LayerMask.NameToLayer("Cell"));
+            Debug.Log(colliders1.Length);
             int[] value = new int[colliders1.Length];
             int[] sort = new int[colliders1.Length];
             for (int i = 0; i < colliders1.Length; i++)
