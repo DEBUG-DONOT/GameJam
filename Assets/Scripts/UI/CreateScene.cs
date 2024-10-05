@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreateScene : UIBase
 {
     // Start is called before the first frame update
+    //选择细胞的时候改这个
+    public GameObject newCell;
     void Start()
     {
         OnExit();
@@ -18,7 +21,8 @@ public class CreateScene : UIBase
     }
     public override void OnExit()
     {
-        Time.timeScale = 1;
+
+        newCell = null;
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;

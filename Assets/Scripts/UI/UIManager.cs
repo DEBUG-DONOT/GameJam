@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
         currUIPanel = GameObject.Find("MainMenu");
         isEnd = false;
     }
-    public void EnterOtherPanel(GameObject otherPanel)
+    public void EnterPanel(GameObject otherPanel)
     {
         UIBase newUI = otherPanel.GetComponent<UIBase>();
         if (newUI == null)
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         }
         if (newUI.state == UIState.Exit)
         {
-            currUIPanel.GetComponent<UIBase>().OnExit();
+            if(currUIPanel!=null)currUIPanel.GetComponent<UIBase>().OnExit();
             currUIPanel=otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
         }
