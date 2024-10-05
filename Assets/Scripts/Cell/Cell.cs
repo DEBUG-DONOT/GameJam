@@ -30,10 +30,17 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (nowSpwn)
+            {
+
+            }
+            else
+            {
             nowSpwn = true; 
             GenerateVirtualCells();
             pauseGame();
-            GenerateVirtualCells();
+
+            }
         }
         if (nowSpwn)
         {
