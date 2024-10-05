@@ -15,6 +15,10 @@ public class CellBase : MonoBehaviour
     public int driveForce;
     public float timer;
     public float radius;
+    public void Start()
+    {
+        radius = 0.5f;
+    }
     #region °ûÄÚÄÜÁ¿
     [SerializeField] protected int cellEnergy;
     public int CellEnergy
