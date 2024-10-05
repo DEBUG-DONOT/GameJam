@@ -30,10 +30,12 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("space");
             GenerateVirtualCells();
             var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
+                Debug.Log("click");
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
                 GenerateRealCell(pos);
@@ -44,7 +46,7 @@ public class Cell : MonoBehaviour
     public void AllGenerate()
     {
         nowSpwn = true;
-        
+
         pauseGame();
         if (nowSpwn)
         {
@@ -86,12 +88,12 @@ public class Cell : MonoBehaviour
 
     public void GenerateRealCell(Vector3 position)//在position位置生成一个real cell
     {
-        //GameObject temp = Instantiate(RealCell, position, transform.rotation);
-        //temp.transform.parent = transform;
+        GameObject temp = Instantiate(RealCell, position, transform.rotation);
+        temp.transform.parent = transform;
         nowSpwn = false;
         // 在子物体上添加 Fixed Joint 2D 组件
         GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
-        //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
     }
