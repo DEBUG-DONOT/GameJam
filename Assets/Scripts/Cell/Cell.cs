@@ -33,14 +33,10 @@ public class Cell : MonoBehaviour
 
             nowSpwn = true;
             pauseGame();
+            GenerateVirtualCells();
         }
-
         if (nowSpwn)
         {
-
-            Debug.Log("space");
-
-            GenerateVirtualCells();
             var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
@@ -52,42 +48,30 @@ public class Cell : MonoBehaviour
             }
         }
     }
-    public void AllGenerate()
-    {
-        nowSpwn = true;
+    //public void AllGenerate()
+    //{
+    //    nowSpwn = true;
 
-        pauseGame();
-        if (nowSpwn)
-        {
-            //找到点击的位置
-            var clickedGO = CheckClick.CheckClickOnSomething();
-            if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
-            {
-                Vector3 pos = clickedGO.transform.position;
-                DestroyAllVirtualCell();
-                //DestroySelfVirtualCell();
-                GenerateRealCell(pos);
-                pauseGame();
-            }
-        }
-    }
+    //    pauseGame();
+    //    if (nowSpwn)
+    //    {
+    //        //找到点击的位置
+    //        var clickedGO = CheckClick.CheckClickOnSomething();
+    //        if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
+    //        {
+    //            Vector3 pos = clickedGO.transform.position;
+    //            DestroyAllVirtualCell();
+    //            GenerateRealCell(pos);
+    //            pauseGame();
+    //        }
+    //    }
+    //}
 
 
-    public List<Vector3> ChoseMultiVirtualCell()//一次选中多个virtual cell
-    {
-        List<Vector3> poses=new List<Vector3>();
-        //直到ui发出指令
-
-        return poses;
-    }
-    public void GenerateMultiRealCell(List<Vector3> poses)//一次选中多个virtual cell并生成
-    {
-        DestroyAllVirtualCell();
-
-    }
 
     void DestroyAllVirtualCell()
     {
+        Debug.Log("destroy");
         GameObject[] allVirtualCells = GameObject.FindGameObjectsWithTag(virtualCell.tag);
         foreach (GameObject virtualCell in allVirtualCells)
         {
@@ -97,12 +81,12 @@ public class Cell : MonoBehaviour
 
     public void GenerateRealCell(Vector3 position)//在position位置生成一个real cell
     {
-        GameObject temp = Instantiate(RealCell, position, transform.rotation);
-        temp.transform.parent = transform;
+        //GameObject temp = Instantiate(RealCell, position, transform.rotation);
+        //temp.transform.parent = transform;
         nowSpwn = false;
-        // 在子物体上添加 Fixed Joint 2D 组件
+        //在子物体上添加 Fixed Joint 2D 组件
         GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
     }
@@ -117,6 +101,7 @@ public class Cell : MonoBehaviour
     void GenerateVirtualCells()//生成所有可能的位置
     {
         //Debug.Log(this.gameObject.name + "gen virtual");
+        
         for (int i = 0; i < 6; i++)
         {
             if (neighbors[i] == null)
@@ -153,6 +138,7 @@ public class Cell : MonoBehaviour
             neighbors[i] = hit2D.collider.gameObject;
             return; 
         }
+        Debug.Log(gameObject.name + "gen virsual");
         GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
         temp.transform.parent = transform;
     }
