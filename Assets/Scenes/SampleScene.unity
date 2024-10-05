@@ -2818,7 +2818,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 0}
   newCell: {fileID: 0}
   Blankprefab: {fileID: 0}
-  ChloroplastPrefab: {fileID: 0}
+  ChloroplastPrefab: {fileID: 1405766539533694869, guid: 8c146ad14a0b6c844a166936eec73a62, type: 3}
   MitochondriaPrefab: {fileID: 0}
   MouthPrefab: {fileID: 0}
   FlagellumPrefab: {fileID: 0}
@@ -4706,7 +4706,6 @@ GameObject:
   - component: {fileID: 1968820591}
   - component: {fileID: 1968820590}
   - component: {fileID: 1968820589}
-  - component: {fileID: 1968820592}
   m_Layer: 0
   m_Name: ChloroplastButton
   m_TagString: Untagged
@@ -4748,7 +4747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4779,9 +4778,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1968820592}
-        m_TargetAssemblyTypeName: ChlButton, Assembly-CSharp
-        m_MethodName: OnButtonClick
+      - m_Target: {fileID: 1361346008}
+        m_TargetAssemblyTypeName: CreateScene, Assembly-CSharp
+        m_MethodName: CreateChl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4829,18 +4828,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968820587}
   m_CullTransparentMesh: 1
---- !u!114 &1968820592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968820587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67cfb67db97f9e347b11320696484126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1981034139
 GameObject:
   m_ObjectHideFlags: 0
