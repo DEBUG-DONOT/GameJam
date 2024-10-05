@@ -1,0 +1,29 @@
+{
+    "name": "2DHandPainted",
+    "rootNamespace": "",
+    "references": [
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.2D.Runtime",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "RENDERER_UNIVERSAL"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "WITH_NEW_INPUT"
+        }
+    ],
+    "noEngineReferences": false
+}
