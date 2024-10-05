@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Flagellum : CellBase
 {
+    public GameObject player;
     // Start is called before the first frame update
     void Awake()
     {
-        maxOrganic = 0;
-        maxEnergy = 0;
-        mass = 0;
+        player = GameObject.Find("player");
+        player.GetComponent<Player>().MoveSpeed++;
         cost = 3;
         type = organelleType.Flagellum;
-        CellEnergy = 6;
-        getEnergy = 0;
-        loseEnergy = 0;
         needEnergy = 6;
-        driveForce = 3;
         timer = 1.0f;
     }
 
@@ -32,15 +28,7 @@ public class Flagellum : CellBase
     }
     private void TryUpdate()
     {
-        CellEnergy += getEnergy - loseEnergy;
-        getEnergy = 0;
-        loseEnergy = 0;
-        if (CellEnergy < -6)
-        {
-            Destroy(this.gameObject);
-        }
-        if (CellEnergy > maxEnergy) CellEnergy = maxEnergy;
-        LoseEnergy(needEnergy);
+        player.GetComponent<Player>().Energy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,7 +36,7 @@ public class Flagellum : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                CellEnergy--;
+                player.GetComponent<Player>().Energy--;
             }
         }
     }

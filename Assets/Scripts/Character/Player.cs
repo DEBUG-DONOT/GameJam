@@ -11,20 +11,19 @@ public class Player : Character
         rb = GetComponent<Rigidbody2D>();
         if (rb == null) Debug.LogError("player no rigidbody2D!");
         canMove = true;
-        Energy = 0;
-        GetEnergy=0;
-        LoseEnergy=0;
+        Energy = 10;
+        AllOrganic = 0;
+        mass = 2;
 }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (GetEnergy - LoseEnergy < 0)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            HP += GetEnergy - LoseEnergy;
-            Energy = GetEnergy - LoseEnergy;
-            GetEnergy = 0;
-            LoseEnergy = 0;
+            Energy -= 4;
+            timer = 1.0f;
         }
     }
     private void FixedUpdate()
@@ -43,7 +42,7 @@ public class Player : Character
     {   
         if (canMove)
         {
-            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
+            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed/mass * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed/mass * Time.deltaTime);
             transform.position+=new Vector3(playerMoveDirection.x,playerMoveDirection.y,0f);
             
             if (Input.GetKey(KeyCode.Q))
@@ -139,29 +138,13 @@ public class Player : Character
     private KeyCode JumpKeyCode = KeyCode.W;
     public bool canMove ;
     [SerializeField] private float rotationNumber=0;
+    static float timer = 0;
+    
 
     #region 整体参数
     public int Energy;
-    public int GetEnergy;
-    public int LoseEnergy;
-    
-    [SerializeField] private int organic;
-    public int Organic
-    {
-        set
-        {
-            organic=value;
-            if(organic<0)Organic = 0;
-        }
-        get
-        {
-            return organic;
-        }
-    }
-    #endregion
-
-    #region 体外参数
-    private int Depth;
+    public int AllOrganic;
+    public int mass;
     #endregion
 
     #region Jump
