@@ -15,7 +15,19 @@ public class CreateScene : UIBase
     public GameObject MitochondriaPrefab;
     public GameObject MouthPrefab;
     public GameObject FlagellumPrefab;
-    public List<Button> Buttons;
+
+    public GameObject Cell;
+    public Vector3 position;
+    public static CreateScene GetInstance()
+    {
+        if (createscene == null)
+        {
+            createscene = new CreateScene();
+        }
+        return createscene;
+    }
+    private CreateScene() { }
+    private static CreateScene createscene = null;
     void Start()
     {
         OnExit();
@@ -35,12 +47,11 @@ public class CreateScene : UIBase
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
     }
-    public  GameObject GetPrefab()
+    public  void GetPositon(GameObject cell,Vector2 pos)
     {
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterPanel(GameObject.Find("CreateScene"));
-
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
-        return newCell;
+        Cell = cell;
+        position = pos;
     }
 
     public void SetBlank()
