@@ -30,7 +30,6 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("2");
             nowSpwn = true;
             pauseGame();
         }
@@ -38,8 +37,7 @@ public class Cell : MonoBehaviour
         if (nowSpwn)
         {
             GenerateVirtualCells();
-            var clickedGO = CheckClick.CheckClickOnSomething(); Debug.Log("3");
-            if (clickedGO == null) Debug.Log("4");
+            var clickedGO = CheckClick.CheckClickOnSomething();
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
                 Vector3 pos = clickedGO.transform.position;

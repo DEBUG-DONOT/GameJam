@@ -54,4 +54,12 @@ public class CreateScene : UIBase
         Cell = cell;
         position = pos;
     }
+    public void CreateChl()
+    {
+        GameObject temp= Instantiate(ChloroplastPrefab,position,Cell.transform.rotation,Cell.transform);
+        temp.transform.parent=Cell.transform;
+        temp.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;
+        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+    }
+
 }
