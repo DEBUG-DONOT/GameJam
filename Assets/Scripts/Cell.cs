@@ -9,7 +9,10 @@ public class Cell : MonoBehaviour
     
     void Start()
     {
-        currCellPosition = transform.position;
+        LeftPosition = new Vector3(1, 0, 0);
+        RightPosition=  new Vector3(-1,0, 0);
+        UpPosition=  new Vector3(0,1,0);
+        DownPosition=  new Vector3(0,1,0);
     }
 
     // Update is called once per frame
@@ -17,18 +20,75 @@ public class Cell : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Vector3 spawnCellPosition=new Vector3(1,0,0)+ currCellPosition;
-            currCellPosition=spawnCellPosition;
-            var temp= Instantiate(cell,spawnCellPosition,transform.rotation) ;
-            temp.transform.parent=this.transform ;
+            nowSpwn = true;
+            //pauseGame();
+        }
+        if (nowSpwn)
+        {
+            GameObject temp;
+            Vector3 spawnPosition=Vector3.zero;
+            if(Input.GetKeyDown (KeyCode.W))
+            { 
+                spawnPosition=UpPosition;
+                UpPosition += new Vector3(0, 1, 0);
+                //pauseGame();
+                Debug.Log("W");
+                temp = Instantiate(cell, spawnPosition + this.transform.position, transform.rotation);
+                temp.transform.parent = transform;
+                nowSpwn = false;
+            }
+            else if(Input.GetKeyDown (KeyCode.S))
+            {
+                spawnPosition = DownPosition;
+                DownPosition += new Vector3(0, -1, 0);
+                //pauseGame();
+                Debug.Log("S");
+                temp = Instantiate(cell, spawnPosition + this.transform.position, transform.rotation);
+                temp.transform.parent = transform;
+                nowSpwn = false;
+            }
+            else if(Input.GetKeyDown (KeyCode.D))
+            {
+                spawnPosition=LeftPosition;
+                LeftPosition += new Vector3(1, 0, 0);
+                //pauseGame();
+                Debug.Log("D");
+                temp = Instantiate(cell, spawnPosition + this.transform.position, transform.rotation);
+                temp.transform.parent = transform;
+                nowSpwn = false;
+            }
+            else if(Input.GetKeyDown (KeyCode.A))
+            {
+                spawnPosition=RightPosition;
+                RightPosition += new Vector3(-1, 0, 0);
+                //pauseGame();
+                Debug.Log("A");
+                temp = Instantiate(cell, spawnPosition + this.transform.position, transform.rotation);
+                temp.transform.parent = transform;
+                nowSpwn = false;
+            }
         }
     }
+    void pauseGame()
+    {
+        if(gamePaused)
+        {
+            Time.timeScale = 0;
+            gamePaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            gamePaused = false;
+        }
+    }
+
 
     private void FixedUpdate()
     {
         
     }
-
-    private Vector3 currCellPosition;
-
+    private bool gamePaused=false;
+    private Vector3 LeftPosition,RightPosition,UpPosition,DownPosition;
+    bool nowSpwn=false;
 }
