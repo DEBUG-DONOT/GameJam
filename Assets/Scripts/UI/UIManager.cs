@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
             currUIPanel=otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
         }
+        Time.timeScale = 0;
     }
     public void EnterGameScene()
     {
