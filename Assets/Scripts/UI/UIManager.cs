@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        if (currUIPanel == null) 
+        if (currUIPanel == null||currUIPanel==GameObject.Find("CreateScene")) 
         {
             //前面写结束条件，转到结束界面
             if(Input.GetKeyDown(KeyCode.F))//写结束条件
