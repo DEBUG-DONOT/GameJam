@@ -10,14 +10,14 @@ using UnityEngine.UIElements;
 
 public class Cell : MonoBehaviour
 {
-    public  GameObject RealCell;
+    public GameObject RealCell;
     public GameObject virtualCell;
     static public GameObject ButtonGenCell;
     // Start is called before the first frame update
 
     void Start()
     {
-        rendererSize=GetComponent<Renderer>().bounds.size.x;
+        rendererSize = GetComponent<Renderer>().bounds.size.x;
         //Debug.Log(rendererSize);
     }
     private void Awake()
@@ -30,8 +30,16 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("2");
+            nowSpwn = true;
+            pauseGame();
+        }
+
+        if (nowSpwn)
+        {
             GenerateVirtualCells();
-            var clickedGO = CheckClick.CheckClickOnSomething();
+            var clickedGO = CheckClick.CheckClickOnSomething(); Debug.Log("3");
+            if (clickedGO == null) Debug.Log("4");
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
                 Vector3 pos = clickedGO.transform.position;
@@ -44,17 +52,18 @@ public class Cell : MonoBehaviour
     public void AllGenerate()
     {
         nowSpwn = true;
-        
+
         pauseGame();
         if (nowSpwn)
         {
-            //找到点击的位置
-            var clickedGO = CheckClick.CheckClickOnSomething();
+            GenerateVirtualCells();
+            var clickedGO = CheckClick.CheckClickOnSomething(); Debug.Log("3");
+            if (clickedGO == null) Debug.Log("4");
+            Debug.Log(clickedGO.gameObject.tag);
             if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
                 Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
-                //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
                 pauseGame();
             }
@@ -64,7 +73,7 @@ public class Cell : MonoBehaviour
 
     public List<Vector3> ChoseMultiVirtualCell()//一次选中多个virtual cell
     {
-        List<Vector3> poses=new List<Vector3>();
+        List<Vector3> poses = new List<Vector3>();
         //直到ui发出指令
 
         return poses;
@@ -95,7 +104,7 @@ public class Cell : MonoBehaviour
 
 
     }
-    public void GenerateRealCell(Vector3 position,GameObject m_prefab)//在position位置生成一个real cell
+    public void GenerateRealCell(Vector3 position, GameObject m_prefab)//在position位置生成一个real cell
     {
         GameObject temp = Instantiate(m_prefab, position, transform.rotation);
         temp.transform.parent = transform;
@@ -123,7 +132,7 @@ public class Cell : MonoBehaviour
                 if (testInSideOneDirection(i) == false) return true; //这个方向没东西
             }
         }
-        return false;   
+        return false;
     }
     bool testInSideOneDirection(int i)//一个方向
     {
@@ -140,14 +149,14 @@ public class Cell : MonoBehaviour
         if (hit2D == true)
         {
             neighbors[i] = hit2D.collider.gameObject;
-            return; 
+            return;
         }
-        GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
+        GameObject temp = Instantiate(virtualCell, rendererSize * HexagonDirection.Heax_Directions[i] + transform.position, transform.rotation);
         temp.transform.parent = transform;
     }
     void pauseGame()
     {
-        if(!gamePaused)
+        if (!gamePaused)
         {
             Time.timeScale = 0;
             gamePaused = true;
@@ -161,9 +170,9 @@ public class Cell : MonoBehaviour
     }
 
     float rendererSize = 0;
-    private bool gamePaused=false;
-    private Vector3 LeftPosition,RightPosition,UpPosition,DownPosition;
-    bool nowSpwn=false;
-    public List<GameObject> neighbors ;
-    
+    private bool gamePaused = false;
+    private Vector3 LeftPosition, RightPosition, UpPosition, DownPosition;
+    bool nowSpwn = false;
+    public List<GameObject> neighbors;
+
 }
