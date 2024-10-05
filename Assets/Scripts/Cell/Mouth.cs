@@ -22,11 +22,21 @@ public class Mouth : CellBase
         needOrganic = 0;
         productOrganic = 0;
         hasMito = true;
+        timer = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
-    {  
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            TryUpdate();
+            timer = 1.0f;
+        }
+    }
+    void TryUpdate()
+    {
         CellEnergy += getEnergy - loseEnergy;
         Organic = getOrganic;
         getEnergy = 0;
@@ -51,7 +61,7 @@ public class Mouth : CellBase
             {
                 CellEnergy--;
             }
-            else if(collision.gameObject.tag == "Organic")
+            else if (collision.gameObject.tag == "Organic")
             {
                 GetOrganic(collision.gameObject.GetComponent<Organic>().organic);
             }

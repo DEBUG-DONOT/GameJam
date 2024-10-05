@@ -20,13 +20,23 @@ public class NewBehaviourScript : CellBase
         productEnergy = 21;
         needOrganic = 5;
         productOrganic = 0;
+        timer = 1.0f;
     }
 
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            TryUpdate();
+            timer = 1.0f;
+        }
+    }
     // Update is called once per frame
-    void Update()
+    private void TryUpdate()
     {
         CellEnergy += getEnergy - loseEnergy;
-        Organic += getOrganic-loseOrganic;
+        Organic += getOrganic - loseOrganic;
         getEnergy = 0;
         loseEnergy = 0;
         getOrganic = 0;
