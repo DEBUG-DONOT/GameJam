@@ -26,6 +26,10 @@ public class Cell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+    public void AllGenerate()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             nowSpwn = true;
@@ -34,11 +38,11 @@ public class Cell : MonoBehaviour
         }
         if (nowSpwn)
         {
-           //找到点击的位置
-           var clickedGO=CheckClick.CheckClickOnSomething();
-           if (clickedGO!=null&& virtualCell.CompareTag(clickedGO.tag)==true)
+            //找到点击的位置
+            var clickedGO = CheckClick.CheckClickOnSomething();
+            if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
             {
-                Vector3 pos=clickedGO.transform.position;
+                Vector3 pos = clickedGO.transform.position;
                 DestroyAllVirtualCell();
                 //DestroySelfVirtualCell();
                 GenerateRealCell(pos);
@@ -46,6 +50,7 @@ public class Cell : MonoBehaviour
             }
         }
     }
+
 
     public List<Vector3> ChoseMultiVirtualCell()//一次选中多个virtual cell
     {
@@ -74,12 +79,17 @@ public class Cell : MonoBehaviour
         GameObject temp = Instantiate(RealCell, position, transform.rotation);
         temp.transform.parent = transform;
         nowSpwn = false;
+        // 在子物体上添加 Fixed Joint 2D 组件
+        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+
     }
     public void GenerateRealCell(Vector3 position,GameObject m_prefab)//在position位置生成一个real cell
     {
         GameObject temp = Instantiate(m_prefab, position, transform.rotation);
         temp.transform.parent = transform;
         nowSpwn = false;
+
     }
 
     void GenerateVirtualCells()//生成所有可能的位置
