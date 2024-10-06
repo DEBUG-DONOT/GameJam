@@ -15,6 +15,6 @@ public class Enemy8 : Enemy
     }
     private void FixedUpdate()
     {
-        transform.Rotate(0,60*Time.deltaTime,0);
+        transform.Rotate(0,0,60*Time.deltaTime);
     }
 }
