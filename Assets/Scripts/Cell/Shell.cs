@@ -39,7 +39,7 @@ public class Shell : CellBase
     }
     private void TryUpdate()
     {
-        Player.GetInstance.Energy -= needEnergy;
+        Player.GetInstance.getEnergy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
