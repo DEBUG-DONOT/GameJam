@@ -23,6 +23,8 @@ public class Player : Character
         getEnergy = 0;
         getOrganic = 0;
         mass = 2;
+        AngularSpeed = 0;
+        maxAngle = 100;
 }
 
     // Update is called once per frame
@@ -64,12 +66,12 @@ public class Player : Character
             if (Input.GetKey(KeyCode.Q))
             {
                 // rotationNumber += 3;
-                rb.AddTorque(1);
+                rb.AddTorque(AngularSpeed);
             }
             else if (Input.GetKey(KeyCode.E))
             {
                 // rotationNumber -= 3;
-                rb.AddTorque(-1);
+                rb.AddTorque(-AngularSpeed);
             }
             //Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
            // transform.rotation = rotation;
@@ -129,13 +131,14 @@ public class Player : Character
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision == null) return;
-        //如果撞到tag为ground的物体就让onground为false
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision == null) return;
-        //如果离开tag为ground的物体就让onground为true，但是也不一定这么做
+        if (collision != null)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
+            }
+        }
     }
 
     //应该使用单例模式
@@ -159,7 +162,8 @@ public class Player : Character
     static float timer = 0;
 
     [SerializeField]
-    private float maxAngle = 2;
+    private float maxAngle = 10;
+    public float AngularSpeed;
 
     #region 整体参数
     public int maxEnergy;

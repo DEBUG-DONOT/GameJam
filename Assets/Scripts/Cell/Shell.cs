@@ -48,6 +48,7 @@ public class Shell : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 HP--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }
