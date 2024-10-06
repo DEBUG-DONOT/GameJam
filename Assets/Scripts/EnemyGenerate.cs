@@ -5,28 +5,120 @@ using UnityEngine;
 public class EnemyGenerate : MonoBehaviour
 {
     public GameObject enemyGO;
+    static float timer = 10f;
+    private enum Enemy
+    {
+
+    }
+    private enum Block
+    {
+        left, mid, right
+    }
+    public float maxTimer;
+    public float minTimer;
+    private Block block;
+    private Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxTimer = 10.0f;
+        minTimer = 4.0f;
     }
+    bool[]hasPass = new bool[3];
     private void Awake()
     {
-      //  rigidbody = GetComponent<Rigidbody2D>();
+        for (int i = 0; i < 3; i++)
+        {
+            hasPass[i] = false;
+        }
+        EnemyNumber[0] = 3;
+        EnemyNumber[1] = 3;
+        EnemyNumber[2] = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        for(int i = 0;i<EnemyNumber;i++)
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            Instantiate(enemyGO,transform.position+ new Vector3(0f,1f,0f),transform.rotation);
+            GetBlock();
+            TryGenerate();
+            timer = Random.Range(minTimer,maxTimer);
+        }
+        float currX = Player.GetInstance.transform.position.x;
+        if (currX < 151 && currX > 147 && !hasPass[0])
+        {
+            hasPass[0] = true;
+            GenerateBoss(1);
+        }
+        else if (currX < 252 && currX > 246 && !hasPass[1])
+        {
+            hasPass[1]= true;
+            GenerateBoss(2);
+        }
+        else if(currX < 500 &&currX > 400 && !hasPass[2])
+        {
+            hasPass[2]= true;
+            GenerateBoss(3);
         }
     }
-    public int EnemyNumber = 1;
+    private void GetBlock()
+    {
+        if (Player.GetInstance.transform.position.x < 150)
+        {
+            block = Block.left;
+        }
+        else if (Player.GetInstance.transform.position.x < 250)
+        {
+            block = Block.mid;
+        }
+        else
+        {
+            block = Block.right;
+        }
+    }
+    private void TryGenerate()
+    {
+        switch (block)
+        {
+            case Block.left:
+                break;
+            case Block.mid:
+                break;
+            case Block.right:
+                break;
+        }
+        int sighx = Random.Range(0, 2);
+        int sighy= Random.Range(0, 2);
+        int x, y;
+        if(sighx == 0)
+        {
+            x=-Random.Range(20, 50);
+        }
+        else
+        {
+            x = Random.Range(20, 50);
+        }
+        if (sighy == 0)
+        {
+            y = -Random.Range(10, 30);
+        }
+        else
+        {
+            y = Random.Range(10, 30);
+        }
+        Vector3 dir= new Vector3(x, y, 0);
+        Instantiate(enemyGO, Player.GetInstance.transform.position+dir , transform.rotation);
+    }
+    private void GenerateBoss(int number)
+    {
+        for (int i = 0; i < EnemyNumber[number]; i++)
+        {
+            Instantiate(enemyGO, transform.position + new Vector3(0f, 1f, 0f), transform.rotation);
+        }
+    }
+    public int[] EnemyNumber=new int[3];
     //Rigidbody2D rigidbody = null;
 }
