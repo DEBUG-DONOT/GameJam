@@ -16,12 +16,18 @@ public class Enemy6 : Enemy
     private void FixedUpdate()
     {
 
+        timer -= Time.deltaTime;
         if (Vector3.Distance(this.transform.position, player.transform.position) > SearchRange)
         {
-            int min = -10;
-            int max = 10;
-            Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
-            transform.Translate(randomVector * speed * Time.deltaTime);
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                int min = -10;
+                int max = 10;
+                Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
+                rb.velocity = randomVector * speed;
+                timer = 1f;
+            }
         }
         else
         {
