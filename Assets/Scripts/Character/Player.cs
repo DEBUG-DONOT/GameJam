@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public static Player GetInstance;
+    private void Awake()
+    {
+        GetInstance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,7 @@ public class Player : Character
         canMove = true;
         Energy = 10;
         AllOrganic = 0;
+        ShowEnergy=Energy;
         mass = 2;
 }
 
@@ -24,20 +30,21 @@ public class Player : Character
         {
             Energy -= 4;
             timer = 1.0f;
+            ShowEnergy = Energy;
         }
     }
     private void FixedUpdate()
     {
         Controller();
     }
-    public static Player GetInstance()
+    /*public static Player GetInstance()
     {
         if (player == null)
         {
             player = new Player();
         }
         return player;
-    }
+    }*/
     protected override void Controller()
     {   
         if (canMove)
@@ -47,14 +54,16 @@ public class Player : Character
             
             if (Input.GetKey(KeyCode.Q))
             {
-                rotationNumber += 3;
+                // rotationNumber += 3;
+                rb.AddTorque(10);
             }
             else if (Input.GetKey(KeyCode.E))
             {
-                rotationNumber -= 3;
+                // rotationNumber -= 3;
+                rb.AddTorque(-10);
             }
-            Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
-            transform.rotation = rotation;
+            //Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
+           // transform.rotation = rotation;
         }
     }
 
@@ -122,9 +131,9 @@ public class Player : Character
 
     //应该使用单例模式
     //只有一个player
-    private Player() { }
-    private static Player player = null;
-    private Rigidbody2D rb = null;
+    /*private Player() { }
+    private static Player player = null;*/
+    public Rigidbody2D rb = null;
     //移动状态机变量
     enum PlayerStates
     {
@@ -143,10 +152,10 @@ public class Player : Character
 
     #region 整体参数
     public int Energy;
+    public int ShowEnergy;
     public int AllOrganic;
     public int mass;
     #endregion
-
     #region Jump
     [SerializeField] private float jumpHight=2;
     [SerializeField] private float minJumpHight;

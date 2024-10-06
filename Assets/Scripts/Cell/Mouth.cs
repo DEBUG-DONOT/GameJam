@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Mouth : CellBase
 {
-    public GameObject player;
     private void Awake()
     {
-        player = GameObject.Find("player");
         cost = 1;
         type = organelleType.Mouth;
         needEnergy = 1;
@@ -27,7 +25,7 @@ public class Mouth : CellBase
     }
     void TryUpdate()
     {
-        player.GetComponent<Player>().Energy-=needEnergy;
+        Player.GetInstance.Energy-=needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,11 +33,11 @@ public class Mouth : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                player.GetComponent<Player>().Energy--;
+                Player.GetInstance.Energy--;
             }
             else if (collision.gameObject.tag == "Organic")
             {
-                player.GetComponent<Player>().AllOrganic++;
+                Player.GetInstance.AllOrganic++;
             }
         }
     }

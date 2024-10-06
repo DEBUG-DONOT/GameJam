@@ -5,15 +5,14 @@ using static CellBase;
 
 public class NewBehaviourScript : CellBase
 {
-    public GameObject player;
     // Start is called before the first frame update
     private void Awake()
     {
-        player = GameObject.Find("player");
-        player.GetComponent<Player>().mass += 1;
+
+        Player.GetInstance.mass += 1;
         cost = 3;
         type = organelleType.Mitochondria;
-        productEnergy = 9;
+        productEnergy = 12;
         needOrganic = 1;
         timer = 1.0f;
     }
@@ -30,10 +29,10 @@ public class NewBehaviourScript : CellBase
     // Update is called once per frame
     private void TryUpdate()
     {
-        if (player.GetComponent<Player>().AllOrganic >=needOrganic)
+        if (Player.GetInstance.AllOrganic >=needOrganic)
         {
-            player.GetComponent<Player>().AllOrganic--;
-            player.GetComponent<Player>().Energy += productEnergy;
+            Player.GetInstance.AllOrganic--;
+            Player.GetInstance.Energy += productEnergy;
         }
     }
     public override void OnCollisionEnter2D(Collision2D collision)
@@ -42,7 +41,7 @@ public class NewBehaviourScript : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                player.GetComponent<Player>().Energy--;
+                  Player.GetInstance.Energy--;
             }
         }
     }

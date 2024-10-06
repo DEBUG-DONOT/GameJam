@@ -20,7 +20,7 @@ public class Trap : MonoBehaviour
     {
         if(collision.gameObject.transform.CompareTag("Cell"))
         {
-            Player.GetInstance().Energy -= damge;
+            Player.GetInstance.Energy -= damge;
         }
         Destroy(gameObject);
     }
