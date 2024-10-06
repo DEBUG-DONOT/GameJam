@@ -12,7 +12,7 @@ public class Flagellum : CellBase
         cost = 3;
         type = organelleType.Flagellum;
         needEnergy = 6;
-        timer = 1.0f;
+        timer = 0.3f;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Flagellum : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()

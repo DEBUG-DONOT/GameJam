@@ -23,7 +23,7 @@ public class Shell : CellBase
         cost = 3;
         type = organelleType.Shell;
         needEnergy = 1;
-        timer = 1.0f;
+        timer = 0.3f;
         HP = 3;
     }
 
@@ -34,7 +34,7 @@ public class Shell : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()

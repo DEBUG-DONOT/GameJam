@@ -23,7 +23,7 @@ public class Mitochondria : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     // Update is called once per frame
