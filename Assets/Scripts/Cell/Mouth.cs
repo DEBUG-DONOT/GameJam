@@ -34,6 +34,7 @@ public class Mouth : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
             else if (collision.gameObject.tag == "Organic")
             {

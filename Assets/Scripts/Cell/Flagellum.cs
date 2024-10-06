@@ -7,7 +7,8 @@ public class Flagellum : CellBase
     // Start is called before the first frame update
     void Awake()
     {
-        Player.GetInstance.MoveSpeed++;
+        Player.GetInstance.MoveSpeed+=3;
+        Player.GetInstance.AngularSpeed+=3;
         cost = 3;
         type = organelleType.Flagellum;
         needEnergy = 6;
@@ -35,6 +36,7 @@ public class Flagellum : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

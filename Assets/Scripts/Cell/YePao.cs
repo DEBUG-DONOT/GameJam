@@ -36,6 +36,7 @@ public class YePao : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }
