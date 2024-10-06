@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - vitualcell
-  - 
+  - backGround
   - 
   - 
   - 
@@ -42,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 2452865545
     locked: 0

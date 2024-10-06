@@ -52,24 +52,7 @@ public class Cell : MonoBehaviour
             }
         }
     }
-    //public void AllGenerate()
-    //{
-    //    nowSpwn = true;
-
-    //    pauseGame();
-    //    if (nowSpwn)
-    //    {
-    //        //找到点击的位置
-    //        var clickedGO = CheckClick.CheckClickOnSomething();
-    //        if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
-    //        {
-    //            Vector3 pos = clickedGO.transform.position;
-    //            DestroyAllVirtualCell();
-    //            GenerateRealCell(pos);
-    //            pauseGame();
-    //        }
-    //    }
-    //}
+ 
 
 
 
