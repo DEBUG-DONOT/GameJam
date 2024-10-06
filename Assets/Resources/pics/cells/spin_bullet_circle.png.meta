@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c557c6d76420d0c4ba5276a6becdbec1
+guid: 742fee5d821340a449df405e7aedba62
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 900
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,127 +97,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_0
+      name: spin_bullet_circle_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 1610
-        width: 280
-        height: 310
+        x: 0
+        y: 2660
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a84bbe9dfae1a014a99b32f916158ad0
-      internalID: -1412866730
+      spriteID: c16ca7ad5f728ac46a844208d088b75d
+      internalID: 705910538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_1
+      name: spin_bullet_circle_1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 1290
-        width: 280
-        height: 310
+        x: 0
+        y: 2280
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2a3d9c21694c4344baf23db98a9f0b9
-      internalID: -1293130502
+      spriteID: cf54cc373cfd7e84ba3e306fc46a5584
+      internalID: 1873102212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_2
+      name: spin_bullet_circle_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 970
-        width: 280
-        height: 310
+        x: 0
+        y: 1900
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3390adef4e3255c4c8bdbbfdeb82cc9a
-      internalID: -1582203487
+      spriteID: 0c3366ad327860c43906c10e37529ed2
+      internalID: 342319607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_3
+      name: spin_bullet_circle_3
       rect:
         serializedVersion: 2
-        x: 20
-        y: 650
-        width: 280
-        height: 310
+        x: 0
+        y: 1520
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b92107965bbcff74fab9897f083baef3
-      internalID: -1126461207
+      spriteID: 483989cce5514734aba124abb0dc75c4
+      internalID: 759005043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_4
+      name: spin_bullet_circle_4
       rect:
         serializedVersion: 2
-        x: 20
-        y: 330
-        width: 280
-        height: 310
+        x: 0
+        y: 1140
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39dde91be7e1b364283c3a0f65f1d69f
-      internalID: -1203644579
+      spriteID: df5365937b19fb84a9d862a4ebf7d40c
+      internalID: -906018142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell_nucleusEmoty_death_5
+      name: spin_bullet_circle_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 10
-        width: 280
-        height: 310
+        x: 0
+        y: 760
+        width: 380
+        height: 380
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebb446c833255114fb61177df6c25f73
-      internalID: -1277567559
+      spriteID: f6137cd151232584494a1bb530da1239
+      internalID: -1764494815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spin_bullet_circle_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 380
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dca2d34d2b1b6246818b16227301498
+      internalID: 444757018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spin_bullet_circle_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 380
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5a0861e7fb48144b30381f8a2390ae
+      internalID: -1895938717
       vertices: []
       indices: 
       edges: []
@@ -233,12 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cell_nucleusEmoty_death_0: -1412866730
-      Cell_nucleusEmoty_death_1: -1293130502
-      Cell_nucleusEmoty_death_2: -1582203487
-      Cell_nucleusEmoty_death_3: -1126461207
-      Cell_nucleusEmoty_death_4: -1203644579
-      Cell_nucleusEmoty_death_5: -1277567559
+      spin_bullet_circle_0: 705910538
+      spin_bullet_circle_1: 1873102212
+      spin_bullet_circle_2: 342319607
+      spin_bullet_circle_3: 759005043
+      spin_bullet_circle_4: -906018142
+      spin_bullet_circle_5: -1764494815
+      spin_bullet_circle_6: 444757018
+      spin_bullet_circle_7: -1895938717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
