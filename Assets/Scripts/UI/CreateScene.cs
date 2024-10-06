@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class CreateScene : UIBase
 {
     // Start is called before the first frame update
-    //Ñ¡ÔñÏ¸°ûµÄÊ±ºò¸ÄÕâ¸ö
     public GameObject newCell;
     public GameObject ShellPrefab;
     public GameObject ChloroplastPrefab;
@@ -18,18 +17,18 @@ public class CreateScene : UIBase
 
     public GameObject Cell;
     public Vector3 position;
-    public static CreateScene GetInstance()
+    public static CreateScene GetInstance;
+    private void Awake()
     {
-        if (createscene == null)
-        {
-            createscene = new CreateScene();
-        }
-        return createscene;
+        GetInstance = this;
     }
-    private CreateScene() { }
-    private static CreateScene createscene = null;
     void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
         OnExit();
     }
     public override void OnEnter()
