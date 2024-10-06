@@ -9,17 +9,21 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private void Start()
     {
-        Vector3 min = new Vector3(-10, -10, 0);
-        Vector3 max = new Vector3(10, 10, 0);
-        randomVector = new Vector3(Random.Range(min.x, max.x), Random.Range(min.x, max.x), Random.Range(min.x, max.x));
-        randomVector.Normalize();
-        player=Player.GetInstance.gameObject;
-        HP = 3;
+
     }
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void Awake()
+    {
+        Vector3 min = new Vector3(-10, -10, 0);
+        Vector3 max = new Vector3(10, 10, 0);
+        randomVector = new Vector3(Random.Range(min.x, max.x), Random.Range(min.x, max.x), Random.Range(min.x, max.x));
+        randomVector.Normalize();
+        player = Player.GetInstance.gameObject;
+        HP = 3;
     }
     private void FixedUpdate()
     {
