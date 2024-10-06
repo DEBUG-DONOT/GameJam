@@ -17,30 +17,27 @@ public class Cell : MonoBehaviour
 
     void Start()
     {
-        rendererSize=GetComponent<Renderer>().bounds.size.x;
+        
+       
         //Debug.Log(rendererSize);
     }
     private void Awake()
     {
-        neighbors = new List<GameObject>(new GameObject[6]);
+        neighbors = new List<GameObject>(new GameObject[6]); 
+        rendererSize=virtualCell.GetComponent<Renderer>().bounds.size.x;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (nowSpwn)
-            {
 
-            }
-            else
-            {
-            nowSpwn = true; 
-            GenerateVirtualCells();
+            nowSpwn = true;
             pauseGame();
-
-            }
+            GenerateVirtualCells();
         }
         if (nowSpwn)
         {
@@ -138,16 +135,20 @@ public class Cell : MonoBehaviour
         return true;
     }
     void ShowSingleVirtualCell(int i)
-    {
-        RaycastHit2D hit2D = Physics2D.Raycast(HexagonDirection.Heax_Directions[i] + transform.position, Vector2.zero, 0.1f);
+    {   Vector3 newDirection =  transform.rotation* HexagonDirection.Heax_Directions[i] ;
+        Debug.Log(HexagonDirection.Heax_Directions[i] + "   " + newDirection);
+        RaycastHit2D hit2D = Physics2D.Raycast(newDirection + transform.position, Vector2.zero, 0.1f);
         if (hit2D == true)
         {
             neighbors[i] = hit2D.collider.gameObject;
             return; 
         }
         Debug.Log(gameObject.name + "gen virsual");
-        GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
+        
+        GameObject temp = Instantiate(virtualCell,rendererSize* (newDirection.normalized) + transform.position, Player.GetInstance.transform.rotation);
+        Debug.Log(rendererSize);
         temp.transform.parent = transform;
+        Debug.Log("position is "+temp.transform.localPosition);
     }
     void pauseGame()
     {

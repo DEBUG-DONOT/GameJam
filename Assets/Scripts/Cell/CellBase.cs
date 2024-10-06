@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CellBase : MonoBehaviour
 {
-
     public enum organelleType
     {
         Blank, Chloroplast, Mitochondria, Mouth, Flagellum, CellSpine, Pipe, Capsid
@@ -13,7 +12,7 @@ public class CellBase : MonoBehaviour
     public int cost;
     public float timer;
 
-    protected int productEnergy;
+    public int productEnergy;
     public int needEnergy;
     public int needOrganic;
     public int productOrganic;

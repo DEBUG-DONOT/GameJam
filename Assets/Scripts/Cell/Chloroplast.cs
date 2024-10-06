@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Chloroplast : CellBase
 {
-    public GameObject player;
+    
     private void Awake()
     {
 
-        player = GameObject.Find("player");
-        player.GetComponent<Player>().mass += 1;
+
+        Player.GetInstance.mass += 1;
         cost = 3;
-        player = GameObject.Find("player");
         type = organelleType.Chloroplast;
         productEnergy = 18;
         productOrganic = 4;
@@ -29,12 +29,14 @@ public class Chloroplast : CellBase
     }
     private void TryUpdate()
     {
-        productEnergy = 18-(int)(0.5*transform.position.y);
-        productOrganic = 4 - (int)(0.3 * transform.position.y);
+        productEnergy = 8+(int)(transform.position.y);
+        productOrganic = 4 +(int)(0.3 * transform.position.y);
         if(productOrganic < 1) productOrganic = 1;
         if(productEnergy < 2) productEnergy = 2;
-        player.GetComponent<Player>().Energy += productEnergy;
-        player.GetComponent<Player>().AllOrganic += productOrganic;
+        Debug.Log(Player.GetInstance.Energy);
+        Player.GetInstance.Energy += productEnergy;
+        Debug.Log(Player.GetInstance.Energy);
+        Player.GetInstance.AllOrganic += productOrganic;
     }
 public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,7 +44,7 @@ public override void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                player.GetComponent<Player>().Energy--;
+                Player.GetInstance.Energy--;
             }
         }
     }
