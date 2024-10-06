@@ -18,17 +18,22 @@ public class Enemy7 : Enemy
         int min = -3;
         int max = 3;
         Vector3 randomVector = new Vector3(Random.Range(min, max), 0, 0).normalized;
-        GetComponent<Rigidbody>().velocity = randomVector * speed;
+        GetComponent<Rigidbody2D>().velocity = randomVector * speed;
     }
     private void FixedUpdate()
     {
+        timer-=Time.deltaTime;
 
         if (Vector3.Distance(this.transform.position, player.transform.position) >SkipRange)
         {
-            int min = -10;
-            int max = 10;
-            Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
-            transform.Translate(randomVector * speed * Time.deltaTime);
+            if (timer < 0)
+            {
+                int min = -10;
+                int max = 10;
+                Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
+                rb.velocity=randomVector * speed;
+                timer = 2;
+            }
         }
         else
         {
@@ -38,6 +43,6 @@ public class Enemy7 : Enemy
     private void RunAway()
     {
         Vector2 dir = transform.position - player.transform.position;
-        transform.Translate(dir * Time.deltaTime*speed);
+        rb.velocity=dir*speed;
     }
 }

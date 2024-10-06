@@ -16,6 +16,6 @@ public class Enemy4 : Enemy
         int min = -3;
         int max = 3;
         Vector3 randomVector = new Vector3(Random.Range(min, max), 0, 0).normalized;
-        GetComponent<Rigidbody>().velocity = randomVector*speed;
+        GetComponent<Rigidbody2D>().velocity = randomVector*speed;
     }
 }
