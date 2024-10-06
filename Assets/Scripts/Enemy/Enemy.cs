@@ -6,31 +6,17 @@ using static UnityEditor.Progress;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    protected GameObject player;
+    public GameObject player;
     public Rigidbody2D rb;
     public int mass;
     public int attack;
     public int rangedAttack;
     public int organic;
     public float timer;
-    public void FixedUpdate()
+    private void Start()
     {
-        if((Player.GetInstance.gameObject.transform.position-transform.position).magnitude>=100)
-            Destroy(this.gameObject);
-        if(Vector3.Distance(this.transform.position,player.transform.position)>SearchRange)
-        {
-
-            transform.Translate(randomVector*speed*Time.deltaTime);
-        }
-        else
-        {
-            ChasePlayer();
-        }
-    }
-    public void ChasePlayer()
-    {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        transform.Translate(direction * speed * Time.deltaTime);
+        player=Player.GetInstance.gameObject;
+        rb=GetComponent<Rigidbody2D>();
     }
     protected void OnTriggerEnter2D(Collider2D collider)
     {
