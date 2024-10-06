@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if((Player.GetInstance.gameObject.transform.position-transform.position).magnitude>=100)
+            Destroy(this.gameObject);
         if(Vector3.Distance(this.transform.position,player.transform.position)>SearchRange)
         {
 
