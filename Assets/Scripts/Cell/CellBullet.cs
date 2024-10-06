@@ -8,7 +8,7 @@ public class CellBullet : MonoBehaviour
     public int Speed;
     private void Awake()
     {
-        attack = 1;
+        attack = 30;
         Speed = 20;
         GetComponent<Rigidbody2D>().velocity = (transform.position-Player.GetInstance.gameObject.transform.position).normalized*Speed;
     }

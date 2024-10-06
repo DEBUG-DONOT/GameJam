@@ -6,22 +6,20 @@ using static UnityEditor.Progress;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    private GameObject player;
-    private void Start()
+    protected GameObject player;
+    public int mass;
+    public int attack;
+    public int organic;
+    protected void Start()
     {
         Vector3 min = new Vector3(-10, -10, 0);
         Vector3 max = new Vector3(10, 10, 0);
         randomVector = new Vector3(Random.Range(min.x, max.x), Random.Range(min.x, max.x), Random.Range(min.x, max.x));
         randomVector.Normalize();
         player=Player.GetInstance.gameObject;
-        HP = 3;
+
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if((Player.GetInstance.gameObject.transform.position-transform.position).magnitude>=100)
             Destroy(this.gameObject);
@@ -35,12 +33,12 @@ public class Enemy : MonoBehaviour
             ChasePlayer();
         }
     }
-    void ChasePlayer()
+    public void ChasePlayer()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         transform.Translate(direction * speed * Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D collider)
+    protected void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider != null) 
         {
@@ -50,13 +48,17 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    protected void Die()
+    {
+        Destroy(this.gameObject);
+    }
     Vector3 randomVector;
     [SerializeField]
-    private float speed=1.0f;
+    protected float speed=1.0f;
     [SerializeField]
-    private float SearchRange = 5.0f;
+    protected float SearchRange = 5.0f;
     [SerializeField]
-    private int hp;
+    protected int hp;
     public int HP
     {  
         get 
@@ -68,7 +70,7 @@ public class Enemy : MonoBehaviour
             hp = value; 
             if(hp <= 0)
             {
-                Destroy(this.gameObject);
+                Die();
             }
         }
     }

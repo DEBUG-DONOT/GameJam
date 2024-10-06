@@ -7,8 +7,8 @@ public class Flagellum : CellBase
     // Start is called before the first frame update
     void Awake()
     {
-        Player.GetInstance.MoveSpeed+=3;
-        Player.GetInstance.AngularSpeed+=3;
+        Player.GetInstance.MoveSpeed+=1;
+        Player.GetInstance.AngularSpeed+=2;
         cost = 3;
         type = organelleType.Flagellum;
         needEnergy = 6;

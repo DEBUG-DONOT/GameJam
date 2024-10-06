@@ -22,10 +22,10 @@ public class Player : Character
         AllOrganic = 0;
         getEnergy = 0;
         getOrganic = 0;
+        MoveSpeed = 5.0f;
         mass = 2;
         AngularSpeed = 0;
         maxAngle = 100;
-        nowSpwn = false;
 }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class Player : Character
         }
         return player;
     }*/
-    protected override void Controller()
+    private void Controller()
     {   
         if (canMove)
         {
@@ -256,6 +256,19 @@ public class Player : Character
         }
     }
     #endregion
-    public static bool nowSpwn;
+    [SerializeField] private float moveSpeed;
+    public float MoveSpeed
+    {
+        set
+        {
+            moveSpeed = value;
+            if (moveSpeed < minSpeed) MoveSpeed = minSpeed;
+        }
+        get
+        {
+            return moveSpeed;
+        }
+    }
+    [SerializeField]private float minSpeed;
 }
 
