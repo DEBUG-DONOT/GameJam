@@ -15,7 +15,7 @@ public class Chloroplast : CellBase
         type = organelleType.Chloroplast;
         productEnergy = 18;
         productOrganic = 4;
-        timer = 1.0f;
+        timer = 0.3f;
     }
     // Update is called once per frame
     private void Update()
@@ -24,7 +24,7 @@ public class Chloroplast : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()

@@ -38,7 +38,7 @@ public class Player : Character
             Energy += getEnergy;
             AllOrganic += getOrganic;
             if (Energy < 0) UIManager.GetInstance.EnterPanel(EndScene.GetInstance.gameObject);
-            timer = 1.0f;
+            timer = 0.3f;
             getEnergy = 0;
             getOrganic = 0;
         }
@@ -160,7 +160,7 @@ public class Player : Character
     private KeyCode JumpKeyCode = KeyCode.W;
     public bool canMove ;
     [SerializeField] private float rotationNumber=0;
-    static float timer = 0;
+    static float timer = 0.3f;
 
     [SerializeField]
     private float maxAngle = 10;

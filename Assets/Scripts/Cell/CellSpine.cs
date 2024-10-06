@@ -11,7 +11,7 @@ public class CellSpine : CellBase
     void Awake()
     {
         needEnergy=8;
-        timer = 1f;
+        timer = 1.2f;
         dir=transform.position-Player.GetInstance.gameObject.transform.position;
     }
 
@@ -22,7 +22,7 @@ public class CellSpine : CellBase
         if (timer <= 0)
         {
             TryFire();
-            timer = 1f;
+            timer = 1.2f;
         }
     }
     private void TryFire()

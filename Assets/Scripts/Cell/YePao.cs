@@ -12,7 +12,7 @@ public class YePao : CellBase
         cost = 3;
         type = organelleType.YePao;
         needEnergy = 1;
-        timer = 1.0f;
+        timer = 0.3f;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class YePao : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()
