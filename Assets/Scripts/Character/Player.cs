@@ -32,6 +32,8 @@ public class Player : Character
             Energy -= 4;
             timer = 1.0f;
             ShowEnergy = Energy;
+            if (Energy < 0) UIManager.GetInstance.EnterPanel(EndScene.GetInstance.gameObject);
+
         }
     }
     private void FixedUpdate()
