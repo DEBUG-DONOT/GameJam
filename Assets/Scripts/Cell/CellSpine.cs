@@ -10,7 +10,8 @@ public class CellSpine : CellBase
     // Start is called before the first frame update
     void Awake()
     {
-        needEnergy=8;
+        Player.GetInstance.mass += 2;
+        needEnergy=12;
         timer = 1.2f;
         dir=transform.position-Player.GetInstance.gameObject.transform.position;
     }
