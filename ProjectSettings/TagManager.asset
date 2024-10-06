@@ -6,6 +6,8 @@ TagManager:
   tags:
   - VirtualCell
   - Cell
+  - Enemy
+  - CellBullet
   layers:
   - Default
   - TransparentFX

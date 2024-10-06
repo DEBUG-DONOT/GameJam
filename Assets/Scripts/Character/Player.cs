@@ -17,9 +17,11 @@ public class Player : Character
         if (rb == null) Debug.LogError("player no rigidbody2D!");
         canMove = true;
         maxEnergy = 90;
+        maxOrganic = 10;
         Energy = maxEnergy;
         AllOrganic = 0;
-        ShowEnergy=Energy;
+        getEnergy = 0;
+        getOrganic = 0;
         mass = 2;
 }
 
@@ -30,10 +32,10 @@ public class Player : Character
         if (timer <= 0)
         {
             Energy -= 4;
-            timer = 1.0f;
-            ShowEnergy = Energy;
+            Energy += getEnergy;
+            AllOrganic += getOrganic;
             if (Energy < 0) UIManager.GetInstance.EnterPanel(EndScene.GetInstance.gameObject);
-
+            timer = 1.0f;
         }
     }
     private void FixedUpdate()
@@ -169,8 +171,10 @@ public class Player : Character
         }
         get { return energy; }
     }
-    public int ShowEnergy;
+    public int getEnergy;
     public int AllOrganic;
+    public int getOrganic;
+    public int maxOrganic;
     public int mass;
     #endregion
 
