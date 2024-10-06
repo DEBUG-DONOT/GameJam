@@ -8,6 +8,7 @@ public class YePao : CellBase
     void Awake()
     {
         Player.GetInstance.maxEnergy+=20;
+        Player.GetInstance.maxOrganic += 3;
         cost = 3;
         type = organelleType.YePao;
         needEnergy = 1;
@@ -26,7 +27,7 @@ public class YePao : CellBase
     }
     private void TryUpdate()
     {
-        Player.GetInstance.Energy -= needEnergy;
+        Player.GetInstance.getEnergy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {

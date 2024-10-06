@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnergyText : MonoBehaviour
+public class OrganicText : MonoBehaviour
 {
     public Text text;
     void Update()
     {
-        text.text="Energy: "+ Player.GetInstance.Energy.ToString();
+        text.text = "Organic: " + Player.GetInstance.AllOrganic.ToString();
     }
 }

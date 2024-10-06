@@ -31,8 +31,8 @@ public class Mitochondria : CellBase
     {
         if (Player.GetInstance.AllOrganic >=needOrganic)
         {
-            Player.GetInstance.AllOrganic--;
-            Player.GetInstance.Energy += productEnergy;
+            Player.GetInstance.getOrganic--;
+            Player.GetInstance.getEnergy += productEnergy;
         }
     }
     public override void OnCollisionEnter2D(Collision2D collision)

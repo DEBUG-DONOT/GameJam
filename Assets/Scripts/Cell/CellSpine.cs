@@ -11,7 +11,7 @@ public class CellSpine : CellBase
     void Awake()
     {
         needEnergy=8;
-        timer = 5f;
+        timer = 1f;
         dir=transform.position-Player.GetInstance.gameObject.transform.position;
     }
 
@@ -22,12 +22,12 @@ public class CellSpine : CellBase
         if (timer <= 0)
         {
             TryFire();
-            timer = 5f;
+            timer = 1f;
         }
     }
     private void TryFire()
     {
-        Player.GetInstance.Energy-=needEnergy;
+        Player.GetInstance.getEnergy-=needEnergy;
         GameObject.Instantiate(BulletPrefab,transform.position,transform.rotation);
     }
     public override void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +36,7 @@ public class CellSpine : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                Player.GetInstance.Energy--;
+                Player.GetInstance.getEnergy--;
             }
         }
     }
