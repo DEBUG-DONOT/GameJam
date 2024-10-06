@@ -6,7 +6,7 @@ public class CellBase : MonoBehaviour
 {
     public enum organelleType
     {
-        Blank, Chloroplast, Mitochondria, Mouth, Flagellum, CellSpine, Pipe, Capsid
+        Blank, Chloroplast, Mitochondria, Mouth, Flagellum, CellSpine, Pipe, Capsid,YePao
     }
     public organelleType type;
     public int cost;

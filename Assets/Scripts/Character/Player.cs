@@ -16,7 +16,8 @@ public class Player : Character
         rb = GetComponent<Rigidbody2D>();
         if (rb == null) Debug.LogError("player no rigidbody2D!");
         canMove = true;
-        Energy = 10;
+        maxEnergy = 90;
+        Energy = maxEnergy;
         AllOrganic = 0;
         ShowEnergy=Energy;
         mass = 2;
@@ -36,6 +37,8 @@ public class Player : Character
     private void FixedUpdate()
     {
         Controller();
+        if(rb.angularVelocity>maxAngle) rb.angularVelocity = maxAngle;
+        if(rb.angularVelocity<-maxAngle) rb.angularVelocity =- maxAngle;
     }
     /*public static Player GetInstance()
     {
@@ -55,12 +58,12 @@ public class Player : Character
             if (Input.GetKey(KeyCode.Q))
             {
                 // rotationNumber += 3;
-                rb.AddTorque(10);
+                rb.AddTorque(1);
             }
             else if (Input.GetKey(KeyCode.E))
             {
                 // rotationNumber -= 3;
-                rb.AddTorque(-10);
+                rb.AddTorque(-1);
             }
             //Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
            // transform.rotation = rotation;
@@ -148,14 +151,27 @@ public class Player : Character
     public bool canMove ;
     [SerializeField] private float rotationNumber=0;
     static float timer = 0;
-    
+
+    [SerializeField]
+    private float maxAngle = 2;
 
     #region 整体参数
-    public int Energy;
+    public int maxEnergy;
+    [SerializeField] private int energy;
+    public int Energy
+    {
+        set 
+        {
+            energy = value;
+            if(energy > maxEnergy) {Energy = maxEnergy;}
+        }
+        get { return energy; }
+    }
     public int ShowEnergy;
     public int AllOrganic;
     public int mass;
     #endregion
+
     #region Jump
     [SerializeField] private float jumpHight=2;
     [SerializeField] private float minJumpHight;
