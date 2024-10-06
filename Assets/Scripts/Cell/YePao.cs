@@ -8,10 +8,11 @@ public class YePao : CellBase
     void Awake()
     {
         Player.GetInstance.maxEnergy+=20;
+        Player.GetInstance.maxOrganic += 3;
         cost = 3;
         type = organelleType.YePao;
         needEnergy = 1;
-        timer = 1.0f;
+        timer = 0.3f;
     }
 
     // Update is called once per frame
@@ -21,12 +22,12 @@ public class YePao : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()
     {
-        Player.GetInstance.Energy -= needEnergy;
+        Player.GetInstance.getEnergy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,6 +36,7 @@ public class YePao : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

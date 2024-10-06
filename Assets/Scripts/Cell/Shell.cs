@@ -23,7 +23,7 @@ public class Shell : CellBase
         cost = 3;
         type = organelleType.Shell;
         needEnergy = 1;
-        timer = 1.0f;
+        timer = 0.3f;
         HP = 3;
     }
 
@@ -34,12 +34,12 @@ public class Shell : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()
     {
-        Player.GetInstance.Energy -= needEnergy;
+        Player.GetInstance.getEnergy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,6 +48,7 @@ public class Shell : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                 HP--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

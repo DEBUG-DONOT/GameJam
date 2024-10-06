@@ -15,7 +15,7 @@ public class Chloroplast : CellBase
         type = organelleType.Chloroplast;
         productEnergy = 18;
         productOrganic = 4;
-        timer = 1.0f;
+        timer = 0.3f;
     }
     // Update is called once per frame
     private void Update()
@@ -24,7 +24,7 @@ public class Chloroplast : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()
@@ -33,10 +33,8 @@ public class Chloroplast : CellBase
         productOrganic = 4 +(int)(0.3 * transform.position.y);
         if(productOrganic < 1) productOrganic = 1;
         if(productEnergy < 2) productEnergy = 2;
-        Debug.Log(Player.GetInstance.Energy);
-        Player.GetInstance.Energy += productEnergy;
-        Debug.Log(Player.GetInstance.Energy);
-        Player.GetInstance.AllOrganic += productOrganic;
+        Player.GetInstance.getEnergy += productEnergy;
+        Player.GetInstance.getOrganic += productOrganic;
     }
 public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -45,6 +43,7 @@ public override void OnCollisionEnter2D(Collision2D collision)
             if (collision.gameObject.tag == "Enemy")
             {
                 Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

@@ -23,7 +23,7 @@ public class Mitochondria : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     // Update is called once per frame
@@ -31,8 +31,8 @@ public class Mitochondria : CellBase
     {
         if (Player.GetInstance.AllOrganic >=needOrganic)
         {
-            Player.GetInstance.AllOrganic--;
-            Player.GetInstance.Energy += productEnergy;
+            Player.GetInstance.getOrganic--;
+            Player.GetInstance.getEnergy += productEnergy;
         }
     }
     public override void OnCollisionEnter2D(Collision2D collision)
@@ -42,6 +42,7 @@ public class Mitochondria : CellBase
             if (collision.gameObject.tag == "Enemy")
             {
                   Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

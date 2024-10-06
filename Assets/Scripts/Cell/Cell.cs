@@ -34,10 +34,17 @@ public class Cell : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if(nowSpwn==true)
+            {
 
+            }
+            else
+            {
             nowSpwn = true;
             pauseGame();
             GenerateVirtualCells();
+
+            }
         }
         if (nowSpwn)
         {
@@ -52,24 +59,7 @@ public class Cell : MonoBehaviour
             }
         }
     }
-    //public void AllGenerate()
-    //{
-    //    nowSpwn = true;
-
-    //    pauseGame();
-    //    if (nowSpwn)
-    //    {
-    //        //找到点击的位置
-    //        var clickedGO = CheckClick.CheckClickOnSomething();
-    //        if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
-    //        {
-    //            Vector3 pos = clickedGO.transform.position;
-    //            DestroyAllVirtualCell();
-    //            GenerateRealCell(pos);
-    //            pauseGame();
-    //        }
-    //    }
-    //}
+ 
 
 
 
@@ -90,6 +80,14 @@ public class Cell : MonoBehaviour
         nowSpwn = false;
         //在子物体上添加 Fixed Joint 2D 组件
         GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Cell"))
+            {
+                child.GetComponent<Cell>().nowSpwn = false;
+            }
+        }
+
         //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 

@@ -58,52 +58,80 @@ public class CreateScene : UIBase
 
     public void CreateYLT()
     {
-        GameObject temp= Instantiate(ChloroplastPrefab,position,Cell.transform.rotation,Cell.transform);
-        temp.transform.parent=Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType=RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        if (Player.GetInstance.Energy >= ChloroplastPrefab.GetComponent<Chloroplast>().cost)
+        {
+            Player.GetInstance.Energy -= ChloroplastPrefab.GetComponent<Chloroplast>().cost;
+            GameObject temp = Instantiate(ChloroplastPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateXLT()
     {
-        GameObject temp = Instantiate(MitochondriaPrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= MitochondriaPrefab.GetComponent<Mitochondria>().cost;
+        if (Player.GetInstance.Energy >= MitochondriaPrefab.GetComponent<Mitochondria>().cost)
+        {
+            GameObject temp = Instantiate(MitochondriaPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateMOUTH()
     {
-        GameObject temp = Instantiate(MouthPrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= MouthPrefab.GetComponent<Mouth>().cost;
+        if (Player.GetInstance.Energy >= MouthPrefab.GetComponent<Mouth>().cost)
+        {
+            GameObject temp = Instantiate(MouthPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateBIANMAO()
     {
-        GameObject temp = Instantiate(FlagellumPrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= FlagellumPrefab.GetComponent<Flagellum>().cost;
+        if (Player.GetInstance.Energy >= FlagellumPrefab.GetComponent<Flagellum>().cost)
+        {
+            GameObject temp = Instantiate(FlagellumPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateShell()
     {
-        GameObject temp = Instantiate(ShellPrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= ShellPrefab.GetComponent<Shell>().cost;
+        if (Player.GetInstance.Energy >= ShellPrefab.GetComponent<Shell>().cost)
+        {
+            GameObject temp = Instantiate(ShellPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateYePao()
     {
-        GameObject temp = Instantiate(YePaoPrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= YePaoPrefab.GetComponent<YePao>().cost;
+        if (Player.GetInstance.Energy >= YePaoPrefab.GetComponent<YePao>().cost)
+        {
+            GameObject temp = Instantiate(YePaoPrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
     public void CreateCellSpine()
     {
-        GameObject temp = Instantiate(CellSpinePrefab, position, Cell.transform.rotation, Cell.transform);
-        temp.transform.parent = Cell.transform;
-        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        Player.GetInstance.Energy -= CellSpinePrefab.GetComponent<CellSpine>().cost;
+        if (Player.GetInstance.Energy >= CellSpinePrefab.GetComponent<CellSpine>().cost)
+        {
+            GameObject temp = Instantiate(CellSpinePrefab, position, Cell.transform.rotation, Cell.transform);
+            temp.transform.parent = Cell.transform;
+            temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+        }
     }
 
 }

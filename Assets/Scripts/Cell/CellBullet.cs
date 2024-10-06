@@ -19,13 +19,13 @@ public class CellBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision != null)
+        if (collider != null)
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (collider.tag == ("Enemy"))
             {
-                collision.collider.GetComponent<Enemy>().HP-=attack;
+               Destroy(this.gameObject);
             }
         }
     }
