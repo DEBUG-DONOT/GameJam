@@ -35,5 +35,6 @@ public class MainMenu : UIBase
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
+        BGMManager.GetInstance.Play("bgm");
     }
 }

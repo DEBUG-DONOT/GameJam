@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-    public GameObject CreateScene;
     public GameObject EndScene;
     public GameObject MainMenu;
     public GameObject PauseMenu;
     public void Onylt()
     {
-        GameObject.Find("CreateScene").GetComponent<CreateScene>().CreateYLT();
+        CreateScene.GetInstance.CreateYLT();
     }
     public void Onxlt()
     {
-        GameObject.Find("CreateScene").GetComponent<CreateScene>().CreateXLT();
+        CreateScene.GetInstance.CreateXLT();
     }
     public void OnMouth()
     {
-        GameObject.Find("CreateScene").GetComponent<CreateScene>().CreateMOUTH();
+        CreateScene.GetInstance.CreateMOUTH();
     }
     public void Onbianmao()
     {
-        GameObject.Find("CreateScene").GetComponent<CreateScene>().CreateBIANMAO();
+        CreateScene.GetInstance.CreateBIANMAO();
     }
     public void OnShell()
     {
-        GameObject.Find("CreateScene").GetComponent<CreateScene>().CreateShell();
+        CreateScene.GetInstance.CreateShell();
     }
-    
+    public void OnYePao()
+    {
+        CreateScene.GetInstance.CreateYePao();
+    }
+    public void OnCellSpine()
+    {
+        CreateScene.GetInstance.CreateCellSpine();
+    }
 }

@@ -45,5 +45,21 @@ public class Enemy : MonoBehaviour
     private float speed=1.0f;
     [SerializeField]
     private float SearchRange = 5.0f;
-    
+    [SerializeField]
+    private int hp;
+    public int HP
+    {  
+        get 
+        { 
+            return hp; 
+        } 
+        set 
+        { 
+            hp = value; 
+            if(hp <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }

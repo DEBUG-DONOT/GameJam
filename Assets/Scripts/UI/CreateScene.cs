@@ -14,6 +14,8 @@ public class CreateScene : UIBase
     public GameObject MitochondriaPrefab;
     public GameObject MouthPrefab;
     public GameObject FlagellumPrefab;
+    public GameObject YePaoPrefab;
+    public GameObject CellSpinePrefab;
 
     public GameObject Cell;
     public Vector3 position;
@@ -45,6 +47,7 @@ public class CreateScene : UIBase
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
+        SoundManager.GetInstance.Play("createCell");
     }
     public  void GetPositon(GameObject cell,Vector2 pos)
     {
@@ -88,6 +91,19 @@ public class CreateScene : UIBase
         temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
     }
-
+    public void CreateYePao()
+    {
+        GameObject temp = Instantiate(YePaoPrefab, position, Cell.transform.rotation, Cell.transform);
+        temp.transform.parent = Cell.transform;
+        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+    }
+    public void CreateCellSpine()
+    {
+        GameObject temp = Instantiate(CellSpinePrefab, position, Cell.transform.rotation, Cell.transform);
+        temp.transform.parent = Cell.transform;
+        temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GameObject.Find("UIManager").GetComponent<UIManager>().EnterGameScene();
+    }
 
 }
