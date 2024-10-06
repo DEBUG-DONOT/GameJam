@@ -37,7 +37,7 @@ public class CellSpine : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                Player.GetInstance.getEnergy--;
+                Player.GetInstance.Energy-=collision.gameObject.GetComponent<Enemy>().attack;
                 Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }

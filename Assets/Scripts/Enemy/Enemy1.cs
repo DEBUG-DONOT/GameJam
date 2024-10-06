@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class Enemy1 : Enemy
 {
-    private float timer;
     private void Awake()
     {
-        HP = 3;
+        HP = 15;
         mass = 1;
+        speed = 5;
         attack = 0;
         timer = 1.0f;
+        organic =10;
     }
     private void Update()
     {
         timer-=Time.deltaTime;
         if (timer <= 0)
         {
-            Vector3 min = new Vector3(-10, -10, 0);
-            Vector3 max = new Vector3(10, 10, 0);
-            Vector3 randomVector = new Vector3(Random.Range(min.x, max.x), Random.Range(min.x, max.x), Random.Range(min.x, max.x)).normalized;
-
+            int min = -10;
+            int max = 10;
+            Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
+            rb.velocity = randomVector*speed;
         }
     }
+
 }
