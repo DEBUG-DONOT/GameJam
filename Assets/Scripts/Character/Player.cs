@@ -25,6 +25,7 @@ public class Player : Character
         mass = 2;
         AngularSpeed = 0;
         maxAngle = 100;
+        nowSpwn = false;
 }
 
     // Update is called once per frame
@@ -255,6 +256,6 @@ public class Player : Character
         }
     }
     #endregion
-
+    public static bool nowSpwn;
 }
 
