@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5632485884257077864}
   - component: {fileID: 8453526471759052215}
   - component: {fileID: -6430371371640687569}
+  - component: {fileID: 5636721129233918289}
   m_Layer: 3
   m_Name: Shell
   m_TagString: Cell
@@ -164,3 +165,23 @@ MonoBehaviour:
   RealCell: {fileID: 1405766539533694869}
   virtualCell: {fileID: 4073194614611875844, guid: 5e64fce52ea7c9c46981ec714223d815, type: 3}
   neighbors: []
+--- !u!114 &5636721129233918289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405766539533694869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aa39f6e8c384b4e9d6df7a81ea2dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  cost: 0
+  timer: 0
+  productEnergy: 0
+  needEnergy: 0
+  needOrganic: 0
+  productOrganic: 0
+  hp: 0
