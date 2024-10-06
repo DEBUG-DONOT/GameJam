@@ -1,0 +1,17 @@
+{
+    "name": "2DHandPaintedEditor",
+    "references": [
+        "GUID:1a8947e718e8e480c976e689219e8872"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

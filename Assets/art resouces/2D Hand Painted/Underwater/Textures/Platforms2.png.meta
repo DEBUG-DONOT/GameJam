@@ -1,0 +1,414 @@
+fileFormatVersion: 2
+guid: 3754cd099c45f4f5da0dd0c283693eda
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7203401659721953138
+    second: Platforms2_0
+  - first:
+      213: -5515889045193452905
+    second: PlatformSeaweed2
+  - first:
+      213: -7935729919904175033
+    second: PlatformSeaweed5
+  - first:
+      213: -6915727468555149248
+    second: PlatformSeaweed6
+  - first:
+      213: 6783384830112420756
+    second: PlatformSeaweed8
+  - first:
+      213: 5160325853523159036
+    second: PlatformSeaweed3
+  - first:
+      213: -4733008857359269135
+    second: PlatformSeaweed10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlatformSeaweed2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1542
+        width: 980
+        height: 386
+      alignment: 9
+      pivot: {x: 0.46400008, y: 0.18279745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -114, y: 193}
+        - {x: -66, y: 169}
+        - {x: 304, y: 164}
+        - {x: 407, y: 149}
+        - {x: 424, y: 124}
+        - {x: 490, y: 37}
+        - {x: 490, y: -39}
+        - {x: 397, y: -193}
+        - {x: 290, y: -159}
+        - {x: 311, y: -193}
+        - {x: 162, y: -193}
+        - {x: 89, y: -156}
+        - {x: 65, y: -117}
+        - {x: -98, y: -131}
+        - {x: -205, y: -191}
+        - {x: -322, y: -190}
+        - {x: -315, y: -149}
+        - {x: -446, y: -164}
+        - {x: -454, y: -93}
+        - {x: -490, y: -104}
+        - {x: -490, y: 83}
+        - {x: -433, y: 104}
+        - {x: -401, y: 139}
+        - {x: -277, y: 166}
+        - {x: -255, y: 130}
+        - {x: -144, y: 160}
+        - {x: -152, y: 193}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79296c84320a373b0800000000000000
+      internalID: -5515889045193452905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformSeaweed5
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 1477
+        width: 1128
+        height: 567
+      alignment: 9
+      pivot: {x: 0.50260645, y: 0.4044437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -516, y: 150.5}
+        - {x: -564, y: 133.5}
+        - {x: -561, y: 99.5}
+        - {x: -533, y: 101.5}
+        - {x: -532, y: 76.5}
+        - {x: -498, y: 26.5}
+        - {x: -444, y: -55.5}
+        - {x: -331.80444, y: -60.06848}
+        - {x: -352, y: -114.5}
+        - {x: -301, y: -112.5}
+        - {x: -279, y: -283.5}
+        - {x: -154, y: -283.5}
+        - {x: -126, y: -201.5}
+        - {x: -139, y: -155.5}
+        - {x: -216, y: -118.5}
+        - {x: -227, y: -66.5}
+        - {x: 407, y: -66.5}
+        - {x: 564, y: 46.5}
+        - {x: 564, y: 146.5}
+        - {x: 563, y: 150.5}
+        - {x: 483, y: 180.5}
+        - {x: 418, y: 283.5}
+        - {x: 319.0138, y: 283.49988}
+        - {x: 270, y: 223.5}
+        - {x: 162.0946, y: 283.49976}
+        - {x: 80, y: 283.5}
+        - {x: 74, y: 235.5}
+        - {x: -42, y: 253.5}
+        - {x: -62.678223, y: 283.5}
+        - {x: -116, y: 283.5}
+        - {x: -124, y: 242.5}
+        - {x: -426, y: 237.5}
+        - {x: -540, y: 166.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c2ca2eeaf9ed190800000000000000
+      internalID: -7935729919904175033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformSeaweed6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1182
+        width: 1129
+        height: 341
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 194.5, y: 168.5}
+        - {x: 91.5, y: 170.5}
+        - {x: 39.5, y: 134.5}
+        - {x: -51.5, y: 170.5}
+        - {x: -121.5, y: 170.5}
+        - {x: -211.5, y: 104.5}
+        - {x: -277.5, y: 145.5}
+        - {x: -454.5, y: 115.5}
+        - {x: -475.5, y: 91.5}
+        - {x: -516.5, y: 86.5}
+        - {x: -564.5, y: 52.5}
+        - {x: -564.5, y: -8.5}
+        - {x: -490.5, y: -115.5}
+        - {x: -433.5, y: -170.5}
+        - {x: 455.5, y: -170.5}
+        - {x: 564.5, y: -56.5}
+        - {x: 564.5, y: 28.5}
+        - {x: 429.5, y: 82.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040eb5922866600a0800000000000000
+      internalID: -6915727468555149248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformSeaweed8
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 603
+        width: 1513
+        height: 584
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 695.5, y: 13}
+        - {x: 646.5, y: 273}
+        - {x: 596.5, y: 292}
+        - {x: 531.5, y: 256}
+        - {x: 487.5, y: 292}
+        - {x: 425.5, y: 77}
+        - {x: 140.5, y: 125}
+        - {x: 80.5, y: 82}
+        - {x: -140.5, y: 141}
+        - {x: -584.5, y: 77}
+        - {x: -564.8427, y: 269.33997}
+        - {x: -651.5, y: 290}
+        - {x: -667.5, y: 57}
+        - {x: -756.5, y: 26}
+        - {x: -756.5, y: -58}
+        - {x: -715.5, y: -89}
+        - {x: -698.5, y: -179}
+        - {x: -623.5, y: -292}
+        - {x: -346.5, y: -292}
+        - {x: -17.5, y: -283}
+        - {x: 324.7008, y: -292}
+        - {x: 643.5, y: -292}
+        - {x: 756.5, y: -167}
+        - {x: 751.5, y: -72}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493df95209c632e50800000000000000
+      internalID: 6783384830112420756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformSeaweed3
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 920
+        width: 908
+        height: 597
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.46783847}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 262, y: 298.5}
+        - {x: -34, y: 289.5}
+        - {x: -112, y: 298.5}
+        - {x: -119, y: 269.5}
+        - {x: -201, y: 238.5}
+        - {x: -222.6875, y: 259.6875}
+        - {x: -348, y: 252.5}
+        - {x: -454, y: 193.5}
+        - {x: -454, y: 15.5}
+        - {x: -288, y: -44.5}
+        - {x: -94, y: -45.5}
+        - {x: 85, y: -33.5}
+        - {x: 86, y: -98.5}
+        - {x: 160, y: -214.5}
+        - {x: 199, y: -298.5}
+        - {x: 374, y: -298.5}
+        - {x: 400, y: -144.5}
+        - {x: 307, y: -98.5}
+        - {x: 305, y: 2.5}
+        - {x: 454, y: 79.5}
+        - {x: 454, y: 236.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf72380f5092d9740800000000000000
+      internalID: 5160325853523159036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformSeaweed10
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 25
+        width: 1897
+        height: 693
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 884.5, y: -10.5}
+        - {x: 695.5, y: 47.5}
+        - {x: 769.5, y: 162.5}
+        - {x: 698.5, y: 218.5}
+        - {x: 466.5, y: 112.5}
+        - {x: 398.5, y: 136.5}
+        - {x: 382.5, y: -2.5}
+        - {x: 256.5, y: 33.5}
+        - {x: 169.5, y: -9.5}
+        - {x: -156.5, y: 27.5}
+        - {x: -624.5, y: -1.5}
+        - {x: -568.5, y: 152.5}
+        - {x: -694.5, y: 346.5}
+        - {x: -767.5, y: 346.5}
+        - {x: -780.5, y: 111.5}
+        - {x: -902.5, y: 178.5}
+        - {x: -859.5, y: -58.5}
+        - {x: -948.5, y: -107.5}
+        - {x: -948.5, y: -182.5}
+        - {x: -910.5, y: -268.5}
+        - {x: -793.5, y: -346.5}
+        - {x: 775.5, y: -346.5}
+        - {x: 948.5, y: -251.5}
+        - {x: 948.5, y: -73.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2c2525589f05eb0800000000000000
+      internalID: -4733008857359269135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PlatformSeaweed10: -4733008857359269135
+      PlatformSeaweed2: -5515889045193452905
+      PlatformSeaweed3: 5160325853523159036
+      PlatformSeaweed5: -7935729919904175033
+      PlatformSeaweed6: -6915727468555149248
+      PlatformSeaweed8: 6783384830112420756
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
