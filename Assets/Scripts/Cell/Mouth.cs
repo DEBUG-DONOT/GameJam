@@ -38,8 +38,8 @@ public class Mouth : CellBase
                 GameObject enemy = collision.collider.gameObject;
                 Player player=Player.GetInstance;
                 enemy.GetComponent<Enemy>().HP-=attack;
-                player.rb.AddForce((transform.position - enemy.transform.position).normalized * 300*player.mass/(player.mass+enemy.GetComponent<Enemy>().mass));
-                enemy.GetComponent<Rigidbody2D>().AddForce((-transform.position + enemy.transform.position).normalized * 300 * enemy.GetComponent<Enemy>().mass / (player.mass + enemy.GetComponent<Enemy>().mass));
+                player.rb.AddForce((transform.position - enemy.transform.position).normalized * BoundForce);
+                enemy.GetComponent<Rigidbody2D>().AddForce((-transform.position + enemy.transform.position).normalized * BoundForce);
             }
         }
     }

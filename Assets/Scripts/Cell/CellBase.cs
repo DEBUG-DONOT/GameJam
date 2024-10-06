@@ -11,7 +11,7 @@ public class CellBase : MonoBehaviour
     public organelleType type;
     public int cost;
     public float timer;
-
+    [SerializeField]protected float BoundForce;
     public int productEnergy;
     public int needEnergy;
     public int needOrganic;

@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     }
     protected void Die()
     {
+        SoundManager.GetInstance.Play("EnemyDie");
         Destroy(this.gameObject);
     }
     Vector3 randomVector;

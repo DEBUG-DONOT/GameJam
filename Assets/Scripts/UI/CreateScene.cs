@@ -69,9 +69,10 @@ public class CreateScene : UIBase
     }
     public void CreateXLT()
     {
-        Player.GetInstance.Energy -= MitochondriaPrefab.GetComponent<Mitochondria>().cost;
+        
         if (Player.GetInstance.Energy >= MitochondriaPrefab.GetComponent<Mitochondria>().cost)
-        {
+        {   
+            Player.GetInstance.Energy -= MitochondriaPrefab.GetComponent<Mitochondria>().cost;
             GameObject temp = Instantiate(MitochondriaPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -80,9 +81,10 @@ public class CreateScene : UIBase
     }
     public void CreateMOUTH()
     {
-        Player.GetInstance.Energy -= MouthPrefab.GetComponent<Mouth>().cost;
+        
         if (Player.GetInstance.Energy >= MouthPrefab.GetComponent<Mouth>().cost)
-        {
+        {   
+            Player.GetInstance.Energy -= MouthPrefab.GetComponent<Mouth>().cost;
             GameObject temp = Instantiate(MouthPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -91,9 +93,10 @@ public class CreateScene : UIBase
     }
     public void CreateBIANMAO()
     {
-        Player.GetInstance.Energy -= FlagellumPrefab.GetComponent<Flagellum>().cost;
+        
         if (Player.GetInstance.Energy >= FlagellumPrefab.GetComponent<Flagellum>().cost)
         {
+            Player.GetInstance.Energy -= FlagellumPrefab.GetComponent<Flagellum>().cost;
             GameObject temp = Instantiate(FlagellumPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -102,9 +105,10 @@ public class CreateScene : UIBase
     }
     public void CreateShell()
     {
-        Player.GetInstance.Energy -= ShellPrefab.GetComponent<Shell>().cost;
+        
         if (Player.GetInstance.Energy >= ShellPrefab.GetComponent<Shell>().cost)
-        {
+        {   
+            Player.GetInstance.Energy -= ShellPrefab.GetComponent<Shell>().cost;
             GameObject temp = Instantiate(ShellPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -113,9 +117,10 @@ public class CreateScene : UIBase
     }
     public void CreateYePao()
     {
-        Player.GetInstance.Energy -= YePaoPrefab.GetComponent<YePao>().cost;
+        
         if (Player.GetInstance.Energy >= YePaoPrefab.GetComponent<YePao>().cost)
-        {
+        {   
+            Player.GetInstance.Energy -= YePaoPrefab.GetComponent<YePao>().cost;
             GameObject temp = Instantiate(YePaoPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -124,9 +129,10 @@ public class CreateScene : UIBase
     }
     public void CreateCellSpine()
     {
-        Player.GetInstance.Energy -= CellSpinePrefab.GetComponent<CellSpine>().cost;
+        
         if (Player.GetInstance.Energy >= CellSpinePrefab.GetComponent<CellSpine>().cost)
-        {
+        {   
+            Player.GetInstance.Energy -= CellSpinePrefab.GetComponent<CellSpine>().cost;
             GameObject temp = Instantiate(CellSpinePrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
             temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
