@@ -6,22 +6,28 @@ public class Enemy10 : Enemy
 {
     private void Awake()
     {
-        HP = 25;
-        mass = 3;
-        attack = 25;
-        speed = 10f;
-        organic = 8;
-        SearchRange = 15;
+        HP = 40;
+        mass = 6;
+        attack = 30;
+        speed = 6f;
+        organic = 6;
+        SearchRange = 5;
     }
     private void FixedUpdate()
     {
 
+        timer -= Time.deltaTime;
         if (Vector3.Distance(this.transform.position, player.transform.position) > SearchRange)
         {
-            int min = -10;
-            int max = 10;
-            Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
-            transform.Translate(randomVector * speed * Time.deltaTime);
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                int min = -10;
+                int max = 10;
+                Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
+                rb.velocity = randomVector * speed;
+                timer = 1f;
+            }
         }
         else
         {
