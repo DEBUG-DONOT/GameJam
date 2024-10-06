@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5632485884257077864}
   - component: {fileID: 8453526471759052215}
   - component: {fileID: -6430371371640687569}
-  - component: {fileID: 85358618550190739}
+  - component: {fileID: -1612537009167439975}
   m_Layer: 3
-  m_Name: Mitochondria
+  m_Name: YePao
   m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   RealCell: {fileID: 1405766539533694869}
   virtualCell: {fileID: 4073194614611875844, guid: 5e64fce52ea7c9c46981ec714223d815, type: 3}
   neighbors: []
---- !u!114 &85358618550190739
+--- !u!114 &-1612537009167439975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405766539533694869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d708325c6eafe4d8f337b52a60ba64, type: 3}
+  m_Script: {fileID: 11500000, guid: 381060a214152d949a42b0695b3c24f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0

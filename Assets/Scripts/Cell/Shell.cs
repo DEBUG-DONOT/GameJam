@@ -3,21 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CellBase;
 
-public class Mitochondria : CellBase
+public class Shell : CellBase
 {
-    // Start is called before the first frame update
-    private void Awake()
+    [SerializeField]private int hp;
+    public int HP
     {
-
-        Player.GetInstance.mass += 1;
+        set
+        {
+            hp = value;
+            if (hp <= 0) Destroy(this.gameObject);
+        }
+        get
+        {
+            return hp;
+        }
+    }
+    void Awake()
+    {
         cost = 3;
-        type = organelleType.Mitochondria;
-        productEnergy = 12;
-        needOrganic = 1;
+        type = organelleType.Shell;
+        needEnergy = 1;
         timer = 1.0f;
+        HP = 3;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         timer -= Time.deltaTime;
         if (timer <= 0)
@@ -26,14 +37,9 @@ public class Mitochondria : CellBase
             timer = 1.0f;
         }
     }
-    // Update is called once per frame
     private void TryUpdate()
     {
-        if (Player.GetInstance.AllOrganic >=needOrganic)
-        {
-            Player.GetInstance.AllOrganic--;
-            Player.GetInstance.Energy += productEnergy;
-        }
+        Player.GetInstance.Energy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -41,7 +47,7 @@ public class Mitochondria : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                  Player.GetInstance.Energy--;
+                HP--;
             }
         }
     }

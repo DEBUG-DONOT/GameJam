@@ -54,7 +54,7 @@ public class Player : Character
     {   
         if (canMove)
         {
-            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed/mass * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed/mass * Time.deltaTime);
+            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed* Time.deltaTime);
             transform.position+=new Vector3(playerMoveDirection.x,playerMoveDirection.y,0f);
             
             if (Input.GetKey(KeyCode.Q))
