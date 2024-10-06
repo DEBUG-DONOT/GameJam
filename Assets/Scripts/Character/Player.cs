@@ -36,6 +36,8 @@ public class Player : Character
             AllOrganic += getOrganic;
             if (Energy < 0) UIManager.GetInstance.EnterPanel(EndScene.GetInstance.gameObject);
             timer = 1.0f;
+            getEnergy = 0;
+            getOrganic = 0;
         }
     }
     private void FixedUpdate()
@@ -172,7 +174,19 @@ public class Player : Character
         get { return energy; }
     }
     public int getEnergy;
-    public int AllOrganic;
+    [SerializeField]private int allOrganic;
+    public int AllOrganic
+    {
+        set
+        {
+            allOrganic = value;
+            if (allOrganic > maxOrganic) { AllOrganic = maxOrganic; }
+        }
+        get
+        {
+            return allOrganic;
+        }
+    }
     public int getOrganic;
     public int maxOrganic;
     public int mass;

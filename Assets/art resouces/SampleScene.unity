@@ -4337,7 +4337,6 @@ GameObject:
   - component: {fileID: 1968820591}
   - component: {fileID: 1968820590}
   - component: {fileID: 1968820589}
-  - component: {fileID: 1968820592}
   m_Layer: 0
   m_Name: ChloroplastButton
   m_TagString: Untagged
@@ -4460,18 +4459,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968820587}
   m_CullTransparentMesh: 1
---- !u!114 &1968820592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968820587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67cfb67db97f9e347b11320696484126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1982422549
 GameObject:
   m_ObjectHideFlags: 0
