@@ -10,7 +10,7 @@ public class Enemy1 : Enemy
         mass = 1;
         speed = 5;
         attack = 0;
-        timer = 1.0f;
+        timer = 2f;
         organic =10;
     }
     private void Update()
@@ -22,6 +22,7 @@ public class Enemy1 : Enemy
             int max = 10;
             Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min, max), 0).normalized;
             rb.velocity = randomVector*speed;
+            timer=2f;
         }
     }
 
