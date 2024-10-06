@@ -20,4 +20,14 @@ public class CellBase : MonoBehaviour
     {
 
     }
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider != null)
+        {
+            if (collider.tag == ("EnemyBullet"))
+            {
+                Player.GetInstance.Energy -= collider.GetComponent<EnemyBullet>().attack;
+            }
+        }
+    }
 }

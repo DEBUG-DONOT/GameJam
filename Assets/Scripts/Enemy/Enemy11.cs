@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class Enemy11 : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject EnemyPrefab;
     void Start()
     {
         

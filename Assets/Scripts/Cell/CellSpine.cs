@@ -10,7 +10,8 @@ public class CellSpine : CellBase
     // Start is called before the first frame update
     void Awake()
     {
-        needEnergy=8;
+        Player.GetInstance.mass += 2;
+        needEnergy=12;
         timer = 1.2f;
         dir=transform.position-Player.GetInstance.gameObject.transform.position;
     }
@@ -36,7 +37,7 @@ public class CellSpine : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                Player.GetInstance.getEnergy--;
+                Player.GetInstance.Energy-=collision.gameObject.GetComponent<Enemy>().attack;
                 Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }

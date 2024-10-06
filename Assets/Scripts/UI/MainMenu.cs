@@ -23,6 +23,7 @@ public class MainMenu : UIBase
     }
     public override void OnEnter()
     {
+        Time.timeScale = 0;
         text.GetComponent<EnergyText>().enabled = false;
         text.text=" ";
         state = UIState.Enter;
