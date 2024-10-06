@@ -30,11 +30,11 @@ public class Organic : MonoBehaviour
         {
             if(this.gameObject.CompareTag("Star"))
             {
-                Player.GetInstance().Organic += 5;
+                Player.GetInstance().AllOrganic += 5;
             }
             else if(this.gameObject.CompareTag("Weed"))
             {
-                Player.GetInstance().Organic += 1;
+                Player.GetInstance().AllOrganic += 1;
             }
         }
     }
