@@ -24,7 +24,7 @@ public class Cell : MonoBehaviour
     private void Awake()
     {
         neighbors = new List<GameObject>(new GameObject[6]); 
-        rendererSize=virtualCell.GetComponent<Renderer>().bounds.size.x;
+        rendererSize=virtualCell.GetComponent<Renderer>().bounds.size.x+0.1f;
 
     }
 

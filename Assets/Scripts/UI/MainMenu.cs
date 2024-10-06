@@ -6,9 +6,19 @@ using UnityEngine.UI;
 
 public class MainMenu : UIBase 
 {
+    public static MainMenu GetInstance;
+    private void Awake()
+    {
+        GetInstance = this;
+    }
     public Text text;
     private void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
         OnEnter();
     }
     public override void OnEnter()
