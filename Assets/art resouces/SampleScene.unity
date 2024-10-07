@@ -354,6 +354,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   canvasGroup: {fileID: 0}
+  CloseList:
+  - {fileID: 1020676731}
+  - {fileID: 2006639514}
+  - {fileID: 25988535}
+  - {fileID: 1599577804}
   text: {fileID: 692450796}
 --- !u!1 &164906840
 GameObject:
@@ -1638,6 +1643,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672099400}
   m_CullTransparentMesh: 1
+--- !u!114 &672099404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672099400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ae2c5d82afda449a2d95e8394632c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675124698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5866,7 +5883,7 @@ Transform:
   m_GameObject: {fileID: 2006639514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5387, y: 1.148, z: 0}
+  m_LocalPosition: {x: -14.59, y: -11.6, z: 0}
   m_LocalScale: {x: 0.9025, y: 1.804, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5943,7 +5960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006639514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c154346a6c3a144bb1e48d3b96265e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 310a2ff3bc682e745b5dfb359e0bd731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}

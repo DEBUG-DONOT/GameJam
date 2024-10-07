@@ -36,6 +36,12 @@ public class Enemy12 : Enemy
         }
         transform.Rotate(Vector3.forward,60*Time.deltaTime,Space.World);
     }
+    public void LaterUpdate()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) >= 70)
+            Destroy(this.gameObject);
+        Debug.Log("The distance is " + Vector2.Distance(transform.position, player.transform.position));
+    }
     public void ChasePlayer()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;

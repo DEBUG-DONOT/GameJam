@@ -33,6 +33,7 @@ public class Organic : MonoBehaviour
             {
                 Player.GetInstance.AllOrganic += 1;
             }
+            SoundManager.GetInstance.Play("Eat");
             Destroy(this.gameObject);
         }
     }

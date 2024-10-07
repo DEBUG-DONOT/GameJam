@@ -22,8 +22,8 @@ public class OrganicGenerate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxTimer = 7.0f;
-        minTimer = 2.5f;
+        maxTimer = 5f;
+        minTimer = 1f;
     }
     void Update()
     {
