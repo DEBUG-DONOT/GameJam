@@ -28,11 +28,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void Update()
-    {
-        if(Vector2.Distance(transform.position, player.transform.position)>=70)
-            Destroy(this.gameObject);
-    }
     protected void Die()
     {
         SoundManager.GetInstance.Play("EnemyDie");

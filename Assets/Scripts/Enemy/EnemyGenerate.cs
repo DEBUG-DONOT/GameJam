@@ -22,8 +22,8 @@ public class EnemyGenerate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxTimer = 10.0f;
-        minTimer = 4.0f;
+        maxTimer = 5.0f;
+        minTimer = 1f;
     }
     bool[] hasPass = new bool[3];
     private void Awake()
@@ -44,17 +44,17 @@ public class EnemyGenerate : MonoBehaviour
             timer = Random.Range(minTimer, maxTimer);
         }
         float currX = Player.GetInstance.transform.position.x;
-        if (currX < 151 && currX > 147 && !hasPass[0])
+        if (currX < midleft.transform.position.x && currX > midleft.transform.position.x -20 && !hasPass[0])
         {
             hasPass[0] = true;
             GenerateBoss(1);
         }
-        else if (currX < 252 && currX > 246 && !hasPass[1])
+        else if (currX < midright.transform.position.x  && currX > midright.transform.position.x -20 && !hasPass[1])
         {
             hasPass[1] = true;
             GenerateBoss(2);
         }
-        else if (currX < 500 && currX > 400 && !hasPass[2])
+        else if (currX < right.transform.position.x  && currX > right.transform.position.x -20 && !hasPass[2])
         {
             hasPass[2] = true;
             GenerateBoss(3);
@@ -138,7 +138,19 @@ public class EnemyGenerate : MonoBehaviour
     }
     private void GenerateBoss(int number)
     {
-        Instantiate(enemyList[4 * number], transform.position + new Vector3(0f, 1f, 0f), transform.rotation);
+        switch (number) 
+        {
+            case 1:
+                Instantiate(enemyList[4 * number], new Vector2(midleft.transform.position.x,Player.GetInstance.transform.position.y), transform.rotation);
+                break;
+            case 2:
+                Instantiate(enemyList[4 * number], new Vector2(midright.transform.position.x, -4), transform.rotation);
+                break;
+            case 3:
+                Instantiate(enemyList[4 * number], new Vector2(midleft.transform.position.x, Player.GetInstance.transform.position.y), transform.rotation);
+                break;
+        }
+
     }
     //Rigidbody2D rigidbody = null;
 }
