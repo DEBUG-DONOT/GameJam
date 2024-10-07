@@ -6,37 +6,17 @@ using static UnityEditor.Progress;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    protected GameObject player;
+    public GameObject player;
+    public Rigidbody2D rb;
     public int mass;
     public int attack;
+    public int rangedAttack;
     public int organic;
-    protected void Start()
+    public float timer;
+    private void Start()
     {
-        Vector3 min = new Vector3(-10, -10, 0);
-        Vector3 max = new Vector3(10, 10, 0);
-        randomVector = new Vector3(Random.Range(min.x, max.x), Random.Range(min.x, max.x), Random.Range(min.x, max.x));
-        randomVector.Normalize();
         player=Player.GetInstance.gameObject;
-
-    }
-    public void FixedUpdate()
-    {
-        if((Player.GetInstance.gameObject.transform.position-transform.position).magnitude>=100)
-            Destroy(this.gameObject);
-        if(Vector3.Distance(this.transform.position,player.transform.position)>SearchRange)
-        {
-
-            transform.Translate(randomVector*speed*Time.deltaTime);
-        }
-        else
-        {
-            ChasePlayer();
-        }
-    }
-    public void ChasePlayer()
-    {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        transform.Translate(direction * speed * Time.deltaTime);
+        rb=GetComponent<Rigidbody2D>();
     }
     protected void OnTriggerEnter2D(Collider2D collider)
     {
@@ -50,13 +30,14 @@ public class Enemy : MonoBehaviour
     }
     protected void Die()
     {
+        SoundManager.GetInstance.Play("EnemyDie");
         Destroy(this.gameObject);
     }
     Vector3 randomVector;
     [SerializeField]
-    protected float speed=1.0f;
-    [SerializeField]
-    protected float SearchRange = 5.0f;
+    protected float speed;
+
+    public float SearchRange;
     [SerializeField]
     protected int hp;
     public int HP

@@ -134,9 +134,11 @@ public class Cell : MonoBehaviour
     }
     void ShowSingleVirtualCell(int i)
     {   Vector3 newDirection =  transform.rotation* HexagonDirection.Heax_Directions[i] ;
-        Debug.Log(HexagonDirection.Heax_Directions[i] + "   " + newDirection);
+        //Debug.Log(HexagonDirection.Heax_Directions[i] + "   " + newDirection);
         RaycastHit2D hit2D = Physics2D.Raycast(newDirection + transform.position, Vector2.zero, 0.1f);
-        if (hit2D == true)
+        if (hit2D == true &&
+            (hit2D.collider.gameObject.CompareTag("Cell")|| hit2D.collider.gameObject.CompareTag("VirtualCell")||
+            hit2D.collider.gameObject.CompareTag("CellBullet")) )
         {
             neighbors[i] = hit2D.collider.gameObject;
             return; 

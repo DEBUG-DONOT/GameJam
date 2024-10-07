@@ -11,7 +11,7 @@ public class CellBase : MonoBehaviour
     public organelleType type;
     public int cost;
     public float timer;
-
+    [SerializeField]protected float BoundForce;
     public int productEnergy;
     public int needEnergy;
     public int needOrganic;
@@ -19,5 +19,15 @@ public class CellBase : MonoBehaviour
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
 
+    }
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider != null)
+        {
+            if (collider.tag == ("EnemyBullet"))
+            {
+                Player.GetInstance.Energy -= collider.GetComponent<EnemyBullet>().attack;
+            }
+        }
     }
 }

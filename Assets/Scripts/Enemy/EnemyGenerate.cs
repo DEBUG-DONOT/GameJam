@@ -5,14 +5,11 @@ using UnityEngine;
 public class EnemyGenerate : MonoBehaviour
 {
     public GameObject enemyGO;
+    public GameObject[] enemyList;
     static float timer = 10f;
-    private enum Enemy
-    {
-
-    }
     private enum Block
     {
-        left, mid, right
+        leftup,leftdown, midup,middown, rightup,rightdown
     }
     public float maxTimer;
     public float minTimer;
@@ -31,15 +28,11 @@ public class EnemyGenerate : MonoBehaviour
         {
             hasPass[i] = false;
         }
-        EnemyNumber[0] = 3;
-        EnemyNumber[1] = 3;
-        EnemyNumber[2] = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -68,26 +61,47 @@ public class EnemyGenerate : MonoBehaviour
     {
         if (Player.GetInstance.transform.position.x < 150)
         {
-            block = Block.left;
+            if(Player.GetInstance.transform.position.y>40)
+                block = Block.leftup;
+            else
+                block= Block.leftdown;
         }
         else if (Player.GetInstance.transform.position.x < 250)
         {
-            block = Block.mid;
+            if (Player.GetInstance.transform.position.y > 40)
+                block = Block.midup;
+            else
+                block = Block.middown;
         }
         else
         {
-            block = Block.right;
+            if (Player.GetInstance.transform.position.y > 40)
+                block = Block.rightup;
+            else
+                block = Block.rightdown;
         }
     }
     private void TryGenerate()
     {
         switch (block)
         {
-            case Block.left:
+            case Block.leftup:
+                enemyGO = enemyList[Random.Range(1, 5)];
                 break;
-            case Block.mid:
+            case Block.leftdown:
+                enemyGO = enemyList[Random.Range(3, 5)];
                 break;
-            case Block.right:
+            case Block.midup:
+                enemyGO = enemyList[Random.Range(6, 9)];
+                break;
+            case Block.middown:
+                enemyGO = enemyList[Random.Range(6, 9)];
+                break;
+            case Block.rightup:
+                enemyGO = enemyList[Random.Range(10, 13)];
+                break;
+            case Block.rightdown:
+                enemyGO = enemyList[Random.Range(10, 13)];
                 break;
         }
         int sighx = Random.Range(0, 2);
@@ -114,11 +128,7 @@ public class EnemyGenerate : MonoBehaviour
     }
     private void GenerateBoss(int number)
     {
-        for (int i = 0; i < EnemyNumber[number]; i++)
-        {
-            Instantiate(enemyGO, transform.position + new Vector3(0f, 1f, 0f), transform.rotation);
-        }
+        Instantiate(enemyList[4*number], transform.position + new Vector3(0f, 1f, 0f), transform.rotation);
     }
-    public int[] EnemyNumber=new int[3];
     //Rigidbody2D rigidbody = null;
 }
