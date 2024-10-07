@@ -54,11 +54,6 @@ public class EnemyGenerate : MonoBehaviour
             hasPass[1] = true;
             GenerateBoss(2);
         }
-        else if (currX < right.transform.position.x  && currX > right.transform.position.x -20 && !hasPass[2])
-        {
-            hasPass[2] = true;
-            GenerateBoss(3);
-        }
     }
     private void GetBlock(float x)
     {
@@ -145,9 +140,6 @@ public class EnemyGenerate : MonoBehaviour
                 break;
             case 2:
                 Instantiate(enemyList[4 * number], new Vector2(midright.transform.position.x, -4), transform.rotation);
-                break;
-            case 3:
-                Instantiate(enemyList[4 * number], new Vector2(midleft.transform.position.x, Player.GetInstance.transform.position.y), transform.rotation);
                 break;
         }
 

@@ -30,6 +30,7 @@ public class PauseMenu : UIBase
     }
     public override void OnExit()
     {
+        Timer.GetInstance.isCount = true;
         Time.timeScale = 1;
         state = UIState.Exit;
         canvasGroup.alpha = 0;
