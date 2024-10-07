@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class Organic : MonoBehaviour
 {
-    public int organic;
     private void Start()
     {
-        
+        int min = -3;
+        int max = 3;
+        Vector3 randomVector = new Vector3(Random.Range(min, max), Random.Range(min,max), 0).normalized;
+        GetComponent<Rigidbody2D>().velocity = randomVector *2;
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        if (this.gameObject.CompareTag("Star"))
+        if(Vector2.Distance(transform.position, Player.GetInstance.transform.position) >= 80)
         {
-
-        }
-        else if (this.gameObject.CompareTag("Weed"))
-        {
-
+            Destroy(gameObject);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject go=collision.gameObject;
+        Debug.Log(go.gameObject.name);
         //Èç¹ûÊÇmouth
         if(go.CompareTag("Mouth"))
         {
@@ -36,6 +33,7 @@ public class Organic : MonoBehaviour
             {
                 Player.GetInstance.AllOrganic += 1;
             }
+            Destroy(this.gameObject);
         }
     }
 
