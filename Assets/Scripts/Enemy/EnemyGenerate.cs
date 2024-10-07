@@ -7,10 +7,6 @@ public class EnemyGenerate : MonoBehaviour
     public GameObject enemyGO;
     public GameObject[] enemyList;
     static float timer = 10f;
-    private enum Enemy
-    {
-        Enemy1,Enemy2,Enemy3,Enemy4,Enemy5,Enemy6,Enemy7,Enemy8,Enemy9,Enemy10,Enemy11,Enemy12
-    }
     private enum Block
     {
         leftup,leftdown, midup,middown, rightup,rightdown
@@ -37,7 +33,6 @@ public class EnemyGenerate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
