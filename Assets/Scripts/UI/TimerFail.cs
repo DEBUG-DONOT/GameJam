@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class TimerFail : MonoBehaviour
 {
-    public static Timer GetInstance;
+    public static TimerFail GetInstance;
     private void Awake()
     {
         GetInstance = this;
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
         }
         year = (int)Math.Round(timer);
-        text.text = "Time:  Year "+year.ToString();
+        text.text = "You survived for "+year.ToString()+" Years";
 
     }
 }
