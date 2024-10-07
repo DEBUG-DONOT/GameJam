@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     }
     public void EnterGameScene()
     {
+        Timer.GetInstance.isCount=true;
         currUIPanel.GetComponent<UIBase>().OnExit();
         currUIPanel = null;
         Time.timeScale = 1.0f;

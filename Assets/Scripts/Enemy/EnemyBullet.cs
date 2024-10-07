@@ -14,7 +14,7 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Player.GetInstance.gameObject.transform.position - transform.position).magnitude >= 80)
+        if ((Player.GetInstance.gameObject.transform.position - transform.position).magnitude >= 50)
         {
             Destroy(this.gameObject);
         }
