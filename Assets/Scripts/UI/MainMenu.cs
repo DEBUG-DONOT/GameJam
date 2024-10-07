@@ -29,6 +29,11 @@ public class MainMenu : UIBase
         state = UIState.Enter;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
+        GameObject rotatepoint = GameObject.Find("rotatepoint");
+        if (rotatepoint != null)
+        {
+            rotatepoint.SetActive(true);
+        }
     }
     public override void OnExit()
     {

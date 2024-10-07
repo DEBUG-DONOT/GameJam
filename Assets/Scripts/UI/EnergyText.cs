@@ -8,6 +8,6 @@ public class EnergyText : MonoBehaviour
     public Text text;
     void Update()
     {
-        text.text="Energy: \n \n    "+ Player.GetInstance.Energy.ToString();
+        text.text="Energy: \n   "+ Player.GetInstance.Energy.ToString();
     }
 }
