@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int rangedAttack;
     public int organic;
     public float timer;
-    private void Start()
+    public void Start()
     {
         player=Player.GetInstance.gameObject;
         rb=GetComponent<Rigidbody2D>();
@@ -27,6 +27,11 @@ public class Enemy : MonoBehaviour
                 HP-=collider.GetComponent<CellBullet>().attack;
             }
         }
+    }
+    public void Update()
+    {
+        if(Vector2.Distance(transform.position, player.transform.position)>=70)
+            Destroy(this.gameObject);
     }
     protected void Die()
     {

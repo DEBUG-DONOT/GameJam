@@ -198,6 +198,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7076314}
   m_CullTransparentMesh: 1
+--- !u!1 &25988535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 25988537}
+  - component: {fileID: 25988536}
+  m_Layer: 0
+  m_Name: OrganicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &25988536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25988535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b6812437dbb141a20aca9a7e3e695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeedPrefab: {fileID: 6683308021378342222, guid: 109f3f34d3ba1b64a8ed0b4b07734be1, type: 3}
+  StarPrefab: {fileID: 1954716828252396844, guid: 01121475716e84246bb8a108247fb296, type: 3}
+  left: {fileID: 949499833}
+  midleft: {fileID: 1423374415}
+  midright: {fileID: 364238246}
+  right: {fileID: 1680708541}
+  maxTimer: 0
+  minTimer: 0
+--- !u!4 &25988537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25988535}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5052338, y: -1.2754568, z: 249.8352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74276143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897750234}
   - component: {fileID: 897750233}
+  - component: {fileID: 897750235}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -1769,6 +1822,23 @@ Transform:
   - {fileID: 824058352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &897750235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897750232}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 977493539}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &928124673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977493540}
   - component: {fileID: 977493539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2058,7 +2128,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2853,7 +2923,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   canvasGroup: {fileID: 0}
-  gameObjectList: []
+  gameObjectList:
+  - {fileID: 2006639514}
+  - {fileID: 1599577804}
+  - {fileID: 1020676731}
+  - {fileID: 25988535}
 --- !u!1 &1170364773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,3 +5712,4 @@ SceneRoots:
   - {fileID: 364238247}
   - {fileID: 1680708542}
   - {fileID: 977493540}
+  - {fileID: 25988537}

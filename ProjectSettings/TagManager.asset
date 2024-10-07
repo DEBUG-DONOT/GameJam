@@ -8,6 +8,9 @@ TagManager:
   - Cell
   - Enemy
   - CellBullet
+  - Weed
+  - Star
+  - Mouth
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - UI
   - vitualcell
   - backGround
-  - 
+  - Camera
   - 
   - 
   - 
