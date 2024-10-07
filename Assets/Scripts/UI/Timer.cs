@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Timer : MonoBehaviour
     }
     public bool isCount;
     public float timer;
+    public int year;
     private Text text;
     private void Start()
     {
@@ -25,7 +27,8 @@ public class Timer : MonoBehaviour
         { 
             timer += Time.deltaTime;
         }
-        text.text = "Time: "+timer.ToString("f2");
+        year = (int)Math.Round(timer);
+        text.text = "Time:  Year "+year.ToString();
 
     }
 }

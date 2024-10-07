@@ -8,6 +8,6 @@ public class OrganicText : MonoBehaviour
     public Text text;
     void Update()
     {
-        text.text = "Organic: " + Player.GetInstance.AllOrganic.ToString();
+        text.text = "Organic:  \n    " + Player.GetInstance.AllOrganic.ToString();
     }
 }
