@@ -49,7 +49,7 @@ public class CreateScene : UIBase
         canvasGroup.blocksRaycasts = false;
         SoundManager.GetInstance.Play("createCell");
     }
-    public  void GetPositon(GameObject cell,Vector2 pos)
+    public void GetPositon(GameObject cell, Vector2 pos)
     {
         GameObject.Find("UIManager").GetComponent<UIManager>().EnterPanel(GameObject.Find("CreateScene"));
         Cell = cell;
@@ -69,9 +69,9 @@ public class CreateScene : UIBase
     }
     public void CreateXLT()
     {
-        
+
         if (Player.GetInstance.Energy >= MitochondriaPrefab.GetComponent<Mitochondria>().cost)
-        {   
+        {
             Player.GetInstance.Energy -= MitochondriaPrefab.GetComponent<Mitochondria>().cost;
             GameObject temp = Instantiate(MitochondriaPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
@@ -81,9 +81,9 @@ public class CreateScene : UIBase
     }
     public void CreateMOUTH()
     {
-        
+
         if (Player.GetInstance.Energy >= MouthPrefab.GetComponent<Mouth>().cost)
-        {   
+        {
             Player.GetInstance.Energy -= MouthPrefab.GetComponent<Mouth>().cost;
             GameObject temp = Instantiate(MouthPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
@@ -93,7 +93,7 @@ public class CreateScene : UIBase
     }
     public void CreateBIANMAO()
     {
-        
+
         if (Player.GetInstance.Energy >= FlagellumPrefab.GetComponent<Flagellum>().cost)
         {
             Player.GetInstance.Energy -= FlagellumPrefab.GetComponent<Flagellum>().cost;
@@ -105,9 +105,9 @@ public class CreateScene : UIBase
     }
     public void CreateShell()
     {
-        
+
         if (Player.GetInstance.Energy >= ShellPrefab.GetComponent<Shell>().cost)
-        {   
+        {
             Player.GetInstance.Energy -= ShellPrefab.GetComponent<Shell>().cost;
             GameObject temp = Instantiate(ShellPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
@@ -117,9 +117,9 @@ public class CreateScene : UIBase
     }
     public void CreateYePao()
     {
-        
+
         if (Player.GetInstance.Energy >= YePaoPrefab.GetComponent<YePao>().cost)
-        {   
+        {
             Player.GetInstance.Energy -= YePaoPrefab.GetComponent<YePao>().cost;
             GameObject temp = Instantiate(YePaoPrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
@@ -129,9 +129,9 @@ public class CreateScene : UIBase
     }
     public void CreateCellSpine()
     {
-        
+
         if (Player.GetInstance.Energy >= CellSpinePrefab.GetComponent<CellSpine>().cost)
-        {   
+        {
             Player.GetInstance.Energy -= CellSpinePrefab.GetComponent<CellSpine>().cost;
             GameObject temp = Instantiate(CellSpinePrefab, position, Cell.transform.rotation, Cell.transform);
             temp.transform.parent = Cell.transform;
