@@ -1,28 +1,25 @@
 fileFormatVersion: 2
-guid: 164043849ba2e5841a8ffc0209a0a936
+guid: a458340116c1b984fbfb1cfbfb3d9c12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 123988955960425766
-    second: cell_yp_0
+      213: -4563603254976298342
+    second: Cell_nucleus_death_0
   - first:
-      213: -5878860838481489106
-    second: cell_yp_1
+      213: 5449345457896033356
+    second: Cell_nucleus_death_1
   - first:
-      213: -6882966680214528055
-    second: cell_yp_2
+      213: -5025950953618420829
+    second: Cell_nucleus_death_2
   - first:
-      213: -6723892893449479516
-    second: cell_yp_3
+      213: 6399414539146269030
+    second: Cell_nucleus_death_3
   - first:
-      213: 3098141067005872050
-    second: cell_yp_4
+      213: 6353583184412462383
+    second: Cell_nucleus_death_4
   - first:
-      213: 6567179559642027298
-    second: cell_yp_5
-  - first:
-      213: -6864090276786831195
-    second: cell_yp_6
+      213: 2740811927098499202
+    second: Cell_nucleus_death_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cell_yp_0
+      name: Cell_nucleus_death_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 32
-        height: 32
+        y: 1600
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62db71c6c4f78b100800000000000000
-      internalID: 123988955960425766
+      spriteID: a924253c403daa0c0800000000000000
+      internalID: -4563603254976298342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cell_yp_1
+      name: Cell_nucleus_death_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 32
-        height: 32
+        y: 1280
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e231b5607371a6ea0800000000000000
-      internalID: -5878860838481489106
+      spriteID: c4c084472d6ff9b40800000000000000
+      internalID: 5449345457896033356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cell_yp_2
+      name: Cell_nucleus_death_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 32
-        height: 32
+        y: 960
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cf96f8954aca70a0800000000000000
-      internalID: -6882966680214528055
+      spriteID: 3abc90f7c3c304ab0800000000000000
+      internalID: -5025950953618420829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cell_yp_3
+      name: Cell_nucleus_death_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 32
-        height: 32
+        y: 640
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4aa9b22c90fefa2a0800000000000000
-      internalID: -6723892893449479516
+      spriteID: 66198482e994fc850800000000000000
+      internalID: 6399414539146269030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cell_yp_4
+      name: Cell_nucleus_death_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
-        height: 32
+        y: 320
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,41 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b74fe2c2eecefa20800000000000000
-      internalID: 3098141067005872050
+      spriteID: f2dccc55e367c2850800000000000000
+      internalID: 6353583184412462383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cell_yp_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2255bacd30f432b50800000000000000
-      internalID: 6567179559642027298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cell_yp_6
+      name: Cell_nucleus_death_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a088e1c24addb0a0800000000000000
-      internalID: -6864090276786831195
+      spriteID: 2802cde1de1590620800000000000000
+      internalID: 2740811927098499202
       vertices: []
       indices: 
       edges: []
@@ -288,13 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cell_yp_0: 123988955960425766
-      cell_yp_1: -5878860838481489106
-      cell_yp_2: -6882966680214528055
-      cell_yp_3: -6723892893449479516
-      cell_yp_4: 3098141067005872050
-      cell_yp_5: 6567179559642027298
-      cell_yp_6: -6864090276786831195
+      Cell_nucleus_death_0: -4563603254976298342
+      Cell_nucleus_death_1: 5449345457896033356
+      Cell_nucleus_death_2: -5025950953618420829
+      Cell_nucleus_death_3: 6399414539146269030
+      Cell_nucleus_death_4: 6353583184412462383
+      Cell_nucleus_death_5: 2740811927098499202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
