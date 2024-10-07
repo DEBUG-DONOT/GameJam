@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void Update()
+    public void LaterUpdate()
     {
         if(Vector2.Distance(transform.position, player.transform.position)>=70)
             Destroy(this.gameObject);
