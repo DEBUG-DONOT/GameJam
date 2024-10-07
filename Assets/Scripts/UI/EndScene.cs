@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class EndScene : UIBase
 {
     public static EndScene GetInstance;
+    public GameObject[] CloseList;
     private void Awake()
     {
         GetInstance=this;
@@ -23,6 +24,10 @@ public class EndScene : UIBase
     private string failyear;
     public override void OnEnter()
     {
+        foreach (var gameObject in CloseList) 
+        { 
+            gameObject.SetActive(false);
+        }
         Time.timeScale = 0;
         state=UIState.Enter;
         canvasGroup.alpha = 1;

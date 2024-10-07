@@ -136,7 +136,7 @@ public class Player : Character
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                Player.GetInstance.Energy--;
+                Player.GetInstance.Energy-=collision.gameObject.GetComponent<Enemy>().attack;
                 Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
