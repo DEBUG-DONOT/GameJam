@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class MainMenu : UIBase 
+public class MainMenu : UIBase
 {
     public static MainMenu GetInstance;
     private void Awake()
     {
         GetInstance = this;
     }
+    public GameObject[] gameObjectList;
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -22,19 +23,22 @@ public class MainMenu : UIBase
     }
     public override void OnEnter()
     {
-        
-        Time.timeScale = 0;
+
+        foreach (var gameObject in gameObjectList)
+        {
+            gameObject.SetActive(false);
+        }
+        Time.timeScale = 1;
         state = UIState.Enter;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
-        GameObject rotatepoint = GameObject.Find("rotatepoint");
-        if (rotatepoint != null)
-        {
-            rotatepoint.SetActive(true);
-        }
     }
     public override void OnExit()
-    {   
+    {
+        foreach (var gameObject in gameObjectList)
+        {
+            gameObject.SetActive(true);
+        }
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;

@@ -24,37 +24,36 @@ public class UIManager : MonoBehaviour
         }
         if (newUI.state == UIState.Exit)
         {
-            if(currUIPanel!=null)currUIPanel.GetComponent<UIBase>().OnExit();
-            currUIPanel=otherPanel;
+            if (currUIPanel != null) currUIPanel.GetComponent<UIBase>().OnExit();
+            currUIPanel = otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
         }
         Time.timeScale = 0;
     }
     public void EnterGameScene()
     {
-        Timer.GetInstance.isCount=true;
+        Time.timeScale = 1;
+        Timer.GetInstance.isCount = true;
         currUIPanel.GetComponent<UIBase>().OnExit();
         currUIPanel = null;
-        Time.timeScale = 1.0f;
     }
     void Update()
     {
-        if (currUIPanel == null||currUIPanel==GameObject.Find("CreateScene")) 
+        if (currUIPanel == null&&Time.timeScale!=0)
         {
             //前面写结束条件，转到结束界面
-            if(Input.GetKeyDown(KeyCode.F))//写结束条件
+            if (Input.GetKeyDown(KeyCode.F))//写结束条件
             {
                 Time.timeScale = 0;
                 currUIPanel = GameObject.Find("EndScene");
                 currUIPanel.GetComponent<UIBase>().OnEnter();
-                isEnd=false;
+                isEnd = false;
                 return;
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Time.timeScale = 0;
                 currUIPanel = GameObject.Find("PauseMenu");
-                currUIPanel.GetComponent <UIBase>().OnEnter();
+                currUIPanel.GetComponent<UIBase>().OnEnter();
             }
         }
     }
