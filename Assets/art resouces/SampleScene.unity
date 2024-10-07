@@ -7609,8 +7609,8 @@ EdgeCollider2D:
   m_Points:
   - {x: 208.6154, y: 36.561306}
   - {x: 197.49191, y: 37.253067}
-  - {x: 196.93613, y: 67.142555}
-  - {x: -202.2965, y: 66.53288}
+  - {x: 196.93613, y: 76.40582}
+  - {x: -203.35498, y: 76.41206}
   - {x: -202.58426, y: -21.292229}
   - {x: -174.32976, y: -19.49912}
   - {x: -150.30933, y: -18.68754}
@@ -8652,7 +8652,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 362.5, y: 29.9, z: -0.036926508}
-  m_LocalPosition: {x: 320.05, y: 30.6, z: -0.036926508}
   m_LocalScale: {x: 0.58333, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8679,8 +8678,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.928012, y: 40.090145, z: 1}
   m_Center: {x: -2.4640048, y: -7.6517696, z: 0}
-  m_Size: {x: 20.372282, y: 33.1222, z: 1}
-  m_Center: {x: 4.7581244, y: 7.941414, z: 0}
 --- !u!1 &2062111911
 GameObject:
   m_ObjectHideFlags: 0
