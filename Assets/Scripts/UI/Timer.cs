@@ -23,12 +23,12 @@ public class Timer : MonoBehaviour
     }
     private void Update()
     {
-        if (isCount) 
+        Debug.Log(Timer.GetInstance.isCount);
+        if (Timer.GetInstance.isCount) 
         { 
             timer += Time.deltaTime;
         }
         year = (int)Math.Round(timer);
         text.text = "Time:  Year "+year.ToString();
-
     }
 }
