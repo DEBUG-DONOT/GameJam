@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
             if (currUIPanel != null) currUIPanel.GetComponent<UIBase>().OnExit();
             currUIPanel = otherPanel;
             currUIPanel.GetComponent<UIBase>().OnEnter();
+            Debug.LogWarning("444");
         }
         Time.timeScale = 0;
     }
