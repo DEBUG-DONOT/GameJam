@@ -10,56 +10,58 @@ using UnityEngine.UIElements;
 
 public class Cell : MonoBehaviour
 {
-    public  GameObject RealCell;
+    public GameObject RealCell;
     public GameObject virtualCell;
     static public GameObject ButtonGenCell;
     // Start is called before the first frame update
 
     void Start()
     {
-        
-       
+
+
         //Debug.Log(rendererSize);
     }
     private void Awake()
     {
-        neighbors = new List<GameObject>(new GameObject[6]); 
-        rendererSize=virtualCell.GetComponent<Renderer>().bounds.size.x+0.1f;
+        neighbors = new List<GameObject>(new GameObject[6]);
+        rendererSize = virtualCell.GetComponent<Renderer>().bounds.size.x + 0.1f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (UIManager.GetInstance.currUIPanel != GameObject.Find("CreateScene"))
         {
-            if(nowSpwn==true)
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (nowSpwn == true)
+                {
+
+                }
+                else
+                {
+                    nowSpwn = true;
+                    pauseGame();
+                    GenerateVirtualCells();
+
+                }
+            }
+            if (nowSpwn)
             {
 
-            }
-            else
-            {
-            nowSpwn = true;
-            pauseGame();
-            GenerateVirtualCells();
-
-            }
-        }
-        if (nowSpwn)
-        {
-           
-            var clickedGO = CheckClick.CheckClickOnSomething();
-            if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
-            {
-                Debug.Log("click");
-                Vector3 pos = clickedGO.transform.position;
-                DestroyAllVirtualCell();
-                GenerateRealCell(pos);
+                var clickedGO = CheckClick.CheckClickOnSomething();
+                if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
+                {
+                    Debug.Log("click");
+                    Vector3 pos = clickedGO.transform.position;
+                    DestroyAllVirtualCell();
+                    GenerateRealCell(pos);
+                }
             }
         }
     }
- 
+
 
 
 
@@ -92,7 +94,7 @@ public class Cell : MonoBehaviour
 
 
     }
-    public void GenerateRealCell(Vector3 position,GameObject m_prefab)//在position位置生成一个real cell
+    public void GenerateRealCell(Vector3 position, GameObject m_prefab)//在position位置生成一个real cell
     {
         GameObject temp = Instantiate(m_prefab, position, transform.rotation);
         temp.transform.parent = transform;
@@ -103,7 +105,7 @@ public class Cell : MonoBehaviour
     void GenerateVirtualCells()//生成所有可能的位置
     {
         //Debug.Log(this.gameObject.name + "gen virtual");
-        
+
         for (int i = 0; i < 6; i++)
         {
             if (neighbors[i] == null)
@@ -121,7 +123,7 @@ public class Cell : MonoBehaviour
                 if (testInSideOneDirection(i) == false) return true; //这个方向没东西
             }
         }
-        return false;   
+        return false;
     }
     bool testInSideOneDirection(int i)//一个方向
     {
@@ -133,26 +135,27 @@ public class Cell : MonoBehaviour
         return true;
     }
     void ShowSingleVirtualCell(int i)
-    {   Vector3 newDirection =  transform.rotation* HexagonDirection.Heax_Directions[i] ;
+    {
+        Vector3 newDirection = transform.rotation * HexagonDirection.Heax_Directions[i];
         //Debug.Log(HexagonDirection.Heax_Directions[i] + "   " + newDirection);
-        RaycastHit2D hit2D = Physics2D.Raycast(newDirection + transform.position, Vector2.zero, 0.1f);
+        RaycastHit2D hit2D = Physics2D.Raycast(newDirection + transform.position, Vector2.zero, 0.1f, ~(1 << LayerMask.NameToLayer("Camera")));
         if (hit2D == true &&
-            (hit2D.collider.gameObject.CompareTag("Cell")|| hit2D.collider.gameObject.CompareTag("VirtualCell")||
-            hit2D.collider.gameObject.CompareTag("CellBullet")) )
+            (hit2D.collider.gameObject.CompareTag("Cell") || hit2D.collider.gameObject.CompareTag("VirtualCell") ||
+            hit2D.collider.gameObject.CompareTag("CellBullet")))
         {
             neighbors[i] = hit2D.collider.gameObject;
-            return; 
+            return;
         }
         Debug.Log(gameObject.name + "gen virsual");
-        
-        GameObject temp = Instantiate(virtualCell,rendererSize* (newDirection.normalized) + transform.position, Player.GetInstance.transform.rotation);
+
+        GameObject temp = Instantiate(virtualCell, rendererSize * (newDirection.normalized) + transform.position, Player.GetInstance.transform.rotation);
         Debug.Log(rendererSize);
         temp.transform.parent = transform;
-        Debug.Log("position is "+temp.transform.localPosition);
+        Debug.Log("position is " + temp.transform.localPosition);
     }
     void pauseGame()
     {
-        if(!gamePaused)
+        if (!gamePaused)
         {
             Time.timeScale = 0;
             gamePaused = true;
@@ -166,9 +169,9 @@ public class Cell : MonoBehaviour
     }
 
     float rendererSize = 0;
-    private bool gamePaused=false;
-    private Vector3 LeftPosition,RightPosition,UpPosition,DownPosition;
-    bool nowSpwn=false;
-    public List<GameObject> neighbors ;
-    
+    private bool gamePaused = false;
+    private Vector3 LeftPosition, RightPosition, UpPosition, DownPosition;
+    bool nowSpwn = false;
+    public List<GameObject> neighbors;
+
 }
