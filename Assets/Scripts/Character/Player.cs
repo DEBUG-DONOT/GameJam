@@ -5,57 +5,77 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public static Player GetInstance;
+    private void Awake()
+    {
+        GetInstance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if (rb == null) Debug.LogError("player no rigidbody2D!");
         canMove = true;
-        Energy = 0;
-        GetEnergy=0;
-        LoseEnergy=0;
+        maxEnergy = 90;
+        maxOrganic = 10;
+        Energy = maxEnergy;
+        AllOrganic = 0;
+        getEnergy = 0;
+        getOrganic = 0;
+        MoveSpeed = 5.0f;
+        mass = 2;
+        AngularSpeed = 0;
+        maxAngle = 100;
 }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (GetEnergy - LoseEnergy < 0)
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            HP += GetEnergy - LoseEnergy;
-            Energy = GetEnergy - LoseEnergy;
-            GetEnergy = 0;
-            LoseEnergy = 0;
+            Energy -= 4;
+            Energy += getEnergy;
+            AllOrganic += getOrganic;
+            if (Energy < 0) UIManager.GetInstance.EnterPanel(EndScene.GetInstance.gameObject);
+            timer = 0.3f;
+            getEnergy = 0;
+            getOrganic = 0;
         }
     }
     private void FixedUpdate()
     {
         Controller();
+        if(rb.angularVelocity>maxAngle) rb.angularVelocity = maxAngle;
+        if(rb.angularVelocity<-maxAngle) rb.angularVelocity =- maxAngle;
     }
-    public static Player GetInstance()
+    /*public static Player GetInstance()
     {
         if (player == null)
         {
             player = new Player();
         }
         return player;
-    }
-    protected override void Controller()
+    }*/
+    private void Controller()
     {   
         if (canMove)
         {
-            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime);
+            playerMoveDirection = new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * MoveSpeed* Time.deltaTime);
             transform.position+=new Vector3(playerMoveDirection.x,playerMoveDirection.y,0f);
             
             if (Input.GetKey(KeyCode.Q))
             {
-                rotationNumber += 3;
+                // rotationNumber += 3;
+                rb.AddTorque(AngularSpeed);
             }
             else if (Input.GetKey(KeyCode.E))
             {
-                rotationNumber -= 3;
+                // rotationNumber -= 3;
+                rb.AddTorque(-AngularSpeed);
             }
-            Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
-            transform.rotation = rotation;
+            //Quaternion rotation = Quaternion.Euler(0,0,transform.rotation.z+rotationNumber);
+           // transform.rotation = rotation;
         }
     }
 
@@ -112,20 +132,21 @@ public class Player : Character
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision == null) return;
-        //如果撞到tag为ground的物体就让onground为false
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision == null) return;
-        //如果离开tag为ground的物体就让onground为true，但是也不一定这么做
+        if (collision != null)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
+            }
+        }
     }
 
     //应该使用单例模式
     //只有一个player
-    private Player() { }
-    private static Player player = null;
-    private Rigidbody2D rb = null;
+    /*private Player() { }
+    private static Player player = null;*/
+    public Rigidbody2D rb = null;
     //移动状态机变量
     enum PlayerStates
     {
@@ -139,29 +160,41 @@ public class Player : Character
     private KeyCode JumpKeyCode = KeyCode.W;
     public bool canMove ;
     [SerializeField] private float rotationNumber=0;
+    static float timer = 0.3f;
+
+    [SerializeField]
+    private float maxAngle = 10;
+    public float AngularSpeed;
 
     #region 整体参数
-    public int Energy;
-    public int GetEnergy;
-    public int LoseEnergy;
-    
-    [SerializeField] private int organic;
-    public int Organic
+    public int maxEnergy;
+    [SerializeField] private int energy;
+    public int Energy
+    {
+        set 
+        {
+            energy = value;
+            if(energy > maxEnergy) {Energy = maxEnergy;}
+        }
+        get { return energy; }
+    }
+    public int getEnergy;
+    [SerializeField]private int allOrganic;
+    public int AllOrganic
     {
         set
         {
-            organic=value;
-            if(organic<0)Organic = 0;
+            allOrganic = value;
+            if (allOrganic > maxOrganic) { AllOrganic = maxOrganic; }
         }
         get
         {
-            return organic;
+            return allOrganic;
         }
     }
-    #endregion
-
-    #region 体外参数
-    private int Depth;
+    public int getOrganic;
+    public int maxOrganic;
+    public int mass;
     #endregion
 
     #region Jump
@@ -223,6 +256,19 @@ public class Player : Character
         }
     }
     #endregion
-
+    [SerializeField] private float moveSpeed;
+    public float MoveSpeed
+    {
+        set
+        {
+            moveSpeed = value;
+            if (moveSpeed < minSpeed) MoveSpeed = minSpeed;
+        }
+        get
+        {
+            return moveSpeed;
+        }
+    }
+    [SerializeField]private float minSpeed;
 }
 

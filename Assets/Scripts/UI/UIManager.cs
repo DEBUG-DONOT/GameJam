@@ -1,24 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject currUIPanel;
     public bool isEnd;
-    public static UIManager GetInstance()
-    {
-        if (uimanager == null)
-        {
-            uimanager = new UIManager();
-        }
-        return uimanager;
-    }
-    private UIManager() { }
-    private static UIManager uimanager= null;
+    public static UIManager GetInstance;
     private void Awake()
     {
+        GetInstance = this;
         currUIPanel = GameObject.Find("MainMenu");
         isEnd = false;
     }

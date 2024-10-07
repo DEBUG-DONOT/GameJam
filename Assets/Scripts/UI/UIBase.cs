@@ -10,15 +10,6 @@ public enum UIState
 {
     public UIState state;
     public CanvasGroup canvasGroup;
-
-    public void Awake()
-    {
-        canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-    }
     public virtual void OnEnter()
     {
         

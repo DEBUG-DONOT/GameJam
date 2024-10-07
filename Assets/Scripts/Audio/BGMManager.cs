@@ -7,6 +7,11 @@ public class BGMManager : MonoBehaviour
     //private static BGMManager instance=null; 可能用到
     private AudioSource audioSource;
     private string currBGMName=null;
+    public static BGMManager GetInstance;
+    private void Awake()
+    {
+        GetInstance = this;
+    }
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();

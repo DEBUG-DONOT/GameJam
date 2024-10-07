@@ -5,23 +5,13 @@ using UnityEngine;
 
 public class Mouth : CellBase
 {
-    public GameObject AttachedMito;//按按钮时绑定
-    public bool hasMito;
+    private int attack;
     private void Awake()
     {
-        maxOrganic = 0;
-        maxEnergy = 0;
-        mass = 0;
+        attack = 5;
         cost = 1;
         type = organelleType.Mouth;
-        CellEnergy = 6;
-        getEnergy = 0;
-        loseEnergy = 0;
         needEnergy = 1;
-        productEnergy = 0;
-        needOrganic = 0;
-        productOrganic = 0;
-        hasMito = true;
         timer = 1.0f;
     }
 
@@ -32,26 +22,12 @@ public class Mouth : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     void TryUpdate()
     {
-        CellEnergy += getEnergy - loseEnergy;
-        Organic = getOrganic;
-        getEnergy = 0;
-        loseEnergy = 0;
-        getOrganic = 0;
-        if (CellEnergy < -6)
-        {
-            Destroy(this.gameObject);
-        }
-        if (Organic > 0)
-        {
-            AttachedMito.GetComponent<CellBase>().GetOrganic(Organic);
-        }
-        if (CellEnergy > maxEnergy) CellEnergy = maxEnergy;
-        LoseEnergy(needEnergy);
+        Player.GetInstance.getEnergy-=needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -59,11 +35,11 @@ public class Mouth : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                CellEnergy--;
-            }
-            else if (collision.gameObject.tag == "Organic")
-            {
-                GetOrganic(collision.gameObject.GetComponent<Organic>().organic);
+                GameObject enemy = collision.collider.gameObject;
+                Player player=Player.GetInstance;
+                enemy.GetComponent<Enemy>().HP-=attack;
+                player.rb.AddForce((transform.position - enemy.transform.position).normalized * 300*player.mass/(player.mass+enemy.GetComponent<Enemy>().mass));
+                enemy.GetComponent<Rigidbody2D>().AddForce((-transform.position + enemy.transform.position).normalized * 300 * enemy.GetComponent<Enemy>().mass / (player.mass + enemy.GetComponent<Enemy>().mass));
             }
         }
     }

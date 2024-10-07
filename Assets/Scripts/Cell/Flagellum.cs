@@ -7,17 +7,12 @@ public class Flagellum : CellBase
     // Start is called before the first frame update
     void Awake()
     {
-        maxOrganic = 0;
-        maxEnergy = 0;
-        mass = 0;
+        Player.GetInstance.MoveSpeed+=1;
+        Player.GetInstance.AngularSpeed+=2;
         cost = 3;
         type = organelleType.Flagellum;
-        CellEnergy = 6;
-        getEnergy = 0;
-        loseEnergy = 0;
         needEnergy = 6;
-        driveForce = 3;
-        timer = 1.0f;
+        timer = 0.3f;
     }
 
     // Update is called once per frame
@@ -27,20 +22,12 @@ public class Flagellum : CellBase
         if (timer <= 0)
         {
             TryUpdate();
-            timer = 1.0f;
+            timer = 0.3f;
         }
     }
     private void TryUpdate()
     {
-        CellEnergy += getEnergy - loseEnergy;
-        getEnergy = 0;
-        loseEnergy = 0;
-        if (CellEnergy < -6)
-        {
-            Destroy(this.gameObject);
-        }
-        if (CellEnergy > maxEnergy) CellEnergy = maxEnergy;
-        LoseEnergy(needEnergy);
+        Player.GetInstance.getEnergy -= needEnergy;
     }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,7 +35,8 @@ public class Flagellum : CellBase
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                CellEnergy--;
+                Player.GetInstance.Energy--;
+                Player.GetInstance.rb.AddForce((transform.position - collision.gameObject.transform.position).normalized * 100);
             }
         }
     }

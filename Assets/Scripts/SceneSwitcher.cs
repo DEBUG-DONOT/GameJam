@@ -7,6 +7,10 @@ public class SceneSwitcher : MonoBehaviour
 {
     [SerializeField]private string sceneName;
     //获得场景名
+    private void Awake()
+    {
+        sceneName = "SampleScene";
+    }
     public void GetSceneName(string name)
     {
         if (SceneManager.GetSceneByName(name).IsValid())

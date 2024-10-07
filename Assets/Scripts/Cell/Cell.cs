@@ -17,23 +17,34 @@ public class Cell : MonoBehaviour
 
     void Start()
     {
-        rendererSize=GetComponent<Renderer>().bounds.size.x;
+        
+       
         //Debug.Log(rendererSize);
     }
     private void Awake()
     {
-        neighbors = new List<GameObject>(new GameObject[6]);
+        neighbors = new List<GameObject>(new GameObject[6]); 
+        rendererSize=virtualCell.GetComponent<Renderer>().bounds.size.x+0.1f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            nowSpwn = true; 
-            GenerateVirtualCells();
+            if(nowSpwn==true)
+            {
+
+            }
+            else
+            {
+            nowSpwn = true;
             pauseGame();
             GenerateVirtualCells();
+
+            }
         }
         if (nowSpwn)
         {
@@ -48,24 +59,7 @@ public class Cell : MonoBehaviour
             }
         }
     }
-    //public void AllGenerate()
-    //{
-    //    nowSpwn = true;
-
-    //    pauseGame();
-    //    if (nowSpwn)
-    //    {
-    //        //找到点击的位置
-    //        var clickedGO = CheckClick.CheckClickOnSomething();
-    //        if (clickedGO != null && virtualCell.CompareTag(clickedGO.tag) == true)
-    //        {
-    //            Vector3 pos = clickedGO.transform.position;
-    //            DestroyAllVirtualCell();
-    //            GenerateRealCell(pos);
-    //            pauseGame();
-    //        }
-    //    }
-    //}
+ 
 
 
 
@@ -86,6 +80,14 @@ public class Cell : MonoBehaviour
         nowSpwn = false;
         //在子物体上添加 Fixed Joint 2D 组件
         GameObject.Find("CreateScene").GetComponent<CreateScene>().GetPositon(gameObject, position);
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Cell"))
+            {
+                child.GetComponent<Cell>().nowSpwn = false;
+            }
+        }
+
         //temp.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
 
@@ -131,16 +133,22 @@ public class Cell : MonoBehaviour
         return true;
     }
     void ShowSingleVirtualCell(int i)
-    {
-        RaycastHit2D hit2D = Physics2D.Raycast(HexagonDirection.Heax_Directions[i] + transform.position, Vector2.zero, 0.1f);
-        if (hit2D == true)
+    {   Vector3 newDirection =  transform.rotation* HexagonDirection.Heax_Directions[i] ;
+        //Debug.Log(HexagonDirection.Heax_Directions[i] + "   " + newDirection);
+        RaycastHit2D hit2D = Physics2D.Raycast(newDirection + transform.position, Vector2.zero, 0.1f);
+        if (hit2D == true &&
+            (hit2D.collider.gameObject.CompareTag("Cell")|| hit2D.collider.gameObject.CompareTag("VirtualCell")||
+            hit2D.collider.gameObject.CompareTag("CellBullet")) )
         {
             neighbors[i] = hit2D.collider.gameObject;
             return; 
         }
         Debug.Log(gameObject.name + "gen virsual");
-        GameObject temp = Instantiate(virtualCell,rendererSize*HexagonDirection.Heax_Directions[i]+transform.position,transform.rotation);
+        
+        GameObject temp = Instantiate(virtualCell,rendererSize* (newDirection.normalized) + transform.position, Player.GetInstance.transform.rotation);
+        Debug.Log(rendererSize);
         temp.transform.parent = transform;
+        Debug.Log("position is "+temp.transform.localPosition);
     }
     void pauseGame()
     {

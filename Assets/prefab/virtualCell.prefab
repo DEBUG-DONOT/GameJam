@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1477516905008640736}
   - component: {fileID: 7134382226293254492}
   - component: {fileID: 5222871274118235718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: virtualCell
   m_TagString: VirtualCell
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b712763e81c584409d975eb21bb2919, type: 3}
   m_Color: {r: 0, g: 0.14390658, b: 0.9924528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
