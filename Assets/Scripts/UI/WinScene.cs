@@ -24,6 +24,7 @@ public class WinScene : UIBase
     private string winyear;
     public override void OnEnter()
     {
+        Debug.LogWarning("111");
         foreach (var gameObject in CloseList) 
         { 
             gameObject.SetActive(false);
@@ -33,7 +34,9 @@ public class WinScene : UIBase
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         winyear=Timer.GetInstance.year.ToString();
+        Debug.LogWarning("222");
         text.text = "You have survived for "+ winyear + " Year"+"\n Back";
+        Debug.LogWarning("333");
     }
         
     public override void OnExit()
