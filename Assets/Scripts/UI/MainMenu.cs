@@ -11,7 +11,6 @@ public class MainMenu : UIBase
     {
         GetInstance = this;
     }
-    public Text text;
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -23,9 +22,8 @@ public class MainMenu : UIBase
     }
     public override void OnEnter()
     {
+        
         Time.timeScale = 0;
-        text.GetComponent<EnergyText>().enabled = false;
-        text.text=" ";
         state = UIState.Enter;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
@@ -36,8 +34,7 @@ public class MainMenu : UIBase
         }
     }
     public override void OnExit()
-    {
-        text.GetComponent<EnergyText>().enabled = true;
+    {   
         state = UIState.Exit;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;

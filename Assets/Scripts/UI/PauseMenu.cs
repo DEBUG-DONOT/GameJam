@@ -21,6 +21,7 @@ public class PauseMenu : UIBase
     }
     public override void OnEnter()
     {
+        Timer.GetInstance.isCount=false;
         Time.timeScale = 0;
         state = UIState.Enter;
         canvasGroup.alpha = 1;

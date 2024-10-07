@@ -14,7 +14,7 @@ public class CellBullet : MonoBehaviour
     }
     private void Update()
     {
-        if ((Player.GetInstance.gameObject.transform.position - transform.position).magnitude >= 40)
+        if ((Player.GetInstance.gameObject.transform.position - transform.position).magnitude >= 50)
         {
             Destroy(this.gameObject);
         }

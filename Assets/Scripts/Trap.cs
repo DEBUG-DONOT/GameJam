@@ -25,6 +25,6 @@ public class Trap : MonoBehaviour
         Destroy(gameObject);
     }
     [SerializeField]
-    int damge = 1;
+    int damge = 20;
 
 }
