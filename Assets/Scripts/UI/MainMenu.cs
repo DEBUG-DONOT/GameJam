@@ -35,6 +35,7 @@ public class MainMenu : UIBase
     }
     public override void OnExit()
     {
+        Timer.GetInstance.isCount = true;
         foreach (var gameObject in gameObjectList)
         {
             gameObject.SetActive(true);
